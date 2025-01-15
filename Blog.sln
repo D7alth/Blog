@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.Domain", "src\Domain\B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.Tests", "src\Tests\Blog.Tests.csproj", "{297EC7BC-09F6-4539-A95B-FFBE8C78613F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B841175D-BC97-49A1-951D-43E1C686DE7F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.API", "src\API\Blog.API.csproj", "{91E25749-75FB-4E41-9DC4-E02DEE92FAC3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +40,12 @@ Global
 		{297EC7BC-09F6-4539-A95B-FFBE8C78613F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{297EC7BC-09F6-4539-A95B-FFBE8C78613F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{297EC7BC-09F6-4539-A95B-FFBE8C78613F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91E25749-75FB-4E41-9DC4-E02DEE92FAC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91E25749-75FB-4E41-9DC4-E02DEE92FAC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91E25749-75FB-4E41-9DC4-E02DEE92FAC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91E25749-75FB-4E41-9DC4-E02DEE92FAC3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{91E25749-75FB-4E41-9DC4-E02DEE92FAC3} = {B841175D-BC97-49A1-951D-43E1C686DE7F}
 	EndGlobalSection
 EndGlobal
