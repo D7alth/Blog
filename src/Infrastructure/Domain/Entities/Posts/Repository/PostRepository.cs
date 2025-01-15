@@ -3,7 +3,7 @@ using Blog.Domain.Entities.Posts.Repositories;
 using Blog.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
-namespace Blog.Infrastructure.Domain.Entities.Posts;
+namespace Blog.Infrastructure.Domain.Entities.Posts.Repository;
 
 public sealed class PostRepository(ApplicationContext context) : IPostRepository
 {

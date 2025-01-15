@@ -1,7 +1,6 @@
-using Blog.Infrastructure.Configuration;
 using Microsoft.EntityFrameworkCore;
 
-namespace Blog.Infrastructure.Providers;
+namespace Blog.Infrastructure.Configuration.Providers;
 
 public sealed class SqlServerDbContextProvider(string connectionString) : IDbContextOptionsProvider
 {

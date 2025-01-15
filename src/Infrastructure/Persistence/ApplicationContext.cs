@@ -8,10 +8,10 @@ public class ApplicationContext(IDbContextOptionsProvider dbContextOptionsProvid
 {
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        if(!optionsBuilder.IsConfigured)
+        if (!optionsBuilder.IsConfigured)
             dbContextOptionsProvider.Configure(optionsBuilder);
     }
-    
+
     public DbSet<Post> Posts { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

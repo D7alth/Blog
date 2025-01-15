@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.Infrastructure", "Infrastructure\Blog.Infrastructure.csproj", "{0BD6DC62-EDAF-4C8F-A3C1-A954B7EF43F0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.Infrastructure", "src\Infrastructure\Blog.Infrastructure.csproj", "{0BD6DC62-EDAF-4C8F-A3C1-A954B7EF43F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.Application", "Application\Blog.Application.csproj", "{21861DE5-90D9-4E06-98F2-AD8574E4F254}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.Application", "src\Application\Blog.Application.csproj", "{21861DE5-90D9-4E06-98F2-AD8574E4F254}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.Domain", "Domain\Blog.Domain.csproj", "{CF1A1326-4700-4A3B-A7E0-AEB97981FA45}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.Domain", "src\Domain\Blog.Domain.csproj", "{CF1A1326-4700-4A3B-A7E0-AEB97981FA45}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.Tests", "Tests\Blog.Tests.csproj", "{297EC7BC-09F6-4539-A95B-FFBE8C78613F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.Tests", "src\Tests\Blog.Tests.csproj", "{297EC7BC-09F6-4539-A95B-FFBE8C78613F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
