@@ -1,3 +1,4 @@
+using Blog.Application.Features.Posts.Commands.CreatePost;
 using Blog.Domain.Entities.Posts.Repositories;
 using Blog.Infrastructure.Configuration;
 using Blog.Infrastructure.Configuration.Providers;
@@ -5,7 +6,6 @@ using Blog.Infrastructure.Domain.Entities.Posts.Repository;
 using Blog.Infrastructure.Persistence;
 using Blog.Infrastructure.UnitOfWork;
 using MediatR;
-using MediatR.Pipeline;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -31,9 +31,10 @@ public static class ServiceRegistration
 
         services.AddScoped<IPostRepository, PostRepository>();
         services.AddScoped<IUnitOfWork, UnitOfWork<ApplicationContext>>();
-        //services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(
-        //    typeof(CreatePostCommandHandler).Assembly
-        //));
+        services.AddMediatR(cfg =>
+            cfg.RegisterServicesFromAssemblies(typeof(CreatePostRequestHandler).Assembly)
+        );
+        services.Decorate(typeof(IRequestHandler<>), typeof(UnitOfWorkCommandHandlerDecorator<>));
 
         // Configure behaviors (decorators)
         // services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPreProcessorBehavior<,>));

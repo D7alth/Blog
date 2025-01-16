@@ -1,6 +1,7 @@
 ### Test database
 
 *.db
+*.db*
 
 ### ASPNETCore template
 ## Ignore Visual Studio temporary files, build results, and

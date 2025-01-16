@@ -27,4 +27,8 @@
     <Folder Include="Features\Posts\Queries\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Blog.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

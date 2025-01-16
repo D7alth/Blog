@@ -1,4 +1,7 @@
+using Blog.Application.Features.Posts.Commands.CreatePost;
+using Blog.Application.Features.Posts.Queries.GetPosts;
 using Blog.Infrastructure;
+using MediatR;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,9 +20,36 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.Run();
+app.MapPost(
+    "/api/posts",
+    async (CreatePostRequest request, IMediator mediator) =>
+    {
+        try
+        {
+            await mediator.Send(request);
+            return Results.Created();
+        }
+        catch (Exception e)
+        {
+            return Results.Problem(e.Message);
+        }
+    }
+);
 
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
+app.MapGet(
+    "/api/posts",
+    async (IMediator mediator) =>
+    {
+        try
+        {
+            var posts = await mediator.Send(new GetPostsQuery());
+            return Results.Ok(posts);
+        }
+        catch (Exception e)
+        {
+            return Results.Problem(e.Message);
+        }
+    }
+);
+
+app.Run();
