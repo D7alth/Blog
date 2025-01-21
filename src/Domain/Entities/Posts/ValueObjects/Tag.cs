@@ -1,11 +1,16 @@
 namespace Blog.Domain.Entities.Posts.ValueObjects;
 
-public sealed class Tag(string id)
+public sealed class Tag(string Name) : ValueObject
 {
-    public string Id { get; } = id;
+    public string Name { get; } = Name;
 
-    public static Tag Create(string id) =>
-        string.IsNullOrEmpty(id)
+    public static Tag Create(string name) =>
+        string.IsNullOrEmpty(name)
             ? throw new ArgumentException("Tag name cannot be null")
-            : new Tag(id);
+            : new Tag(name);
+
+    protected override IEnumerable<object> GetEqualityComponents()
+    {
+        yield return Name;
+    }
 }
