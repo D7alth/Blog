@@ -10,7 +10,7 @@ public sealed class Post : Entity<int>
     public string? Content { get; }
     public DateTime CreatedAt { get; }
     public DateTime UpdatedAt { get; }
-    public List<Tag> Tags { get; } = new List<Tag>();
+    public List<Tag> Tags { get; } = [];
     const int TitleMaxLength = 60;
 
     private Post()
