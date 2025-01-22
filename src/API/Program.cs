@@ -1,5 +1,5 @@
-using Blog.Application.Features.Posts.Commands.CreatePost;
 using Blog.Application.Features.Posts.Queries.GetPosts;
+using Blog.Application.Posts.Commands.CreatePost;
 using Blog.Infrastructure;
 using MediatR;
 

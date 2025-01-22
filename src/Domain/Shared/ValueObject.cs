@@ -1,4 +1,4 @@
-namespace Blog.Domain;
+namespace Blog.Domain.Shared;
 
 public abstract class ValueObject : IEquatable<ValueObject>
 {

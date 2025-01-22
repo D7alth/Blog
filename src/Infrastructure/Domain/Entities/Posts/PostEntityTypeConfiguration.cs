@@ -1,5 +1,5 @@
-using Blog.Domain.Entities.Posts;
-using Blog.Domain.Entities.Posts.ValueObjects;
+using Blog.Domain.Post;
+using Blog.Domain.Post.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;

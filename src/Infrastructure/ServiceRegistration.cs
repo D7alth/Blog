@@ -1,5 +1,5 @@
 using Blog.Application.Features.Posts.Commands.CreatePost;
-using Blog.Domain.Entities.Posts.Repositories;
+using Blog.Domain.Post.Repositories;
 using Blog.Infrastructure.Configuration;
 using Blog.Infrastructure.Configuration.Providers;
 using Blog.Infrastructure.Domain.Entities.Posts.Repository;

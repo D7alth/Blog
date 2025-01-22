@@ -1,4 +1,4 @@
-using Blog.Domain.Entities.Posts;
+using Blog.Domain.Post;
 using Bogus;
 
 namespace Blog.Tests.Domain.Entities.Posts;

@@ -1,4 +1,6 @@
-namespace Blog.Domain.Entities.Posts.ValueObjects;
+using Blog.Domain.Shared;
+
+namespace Blog.Domain.Post.ValueObjects;
 
 public sealed class Tag(string Name) : ValueObject
 {

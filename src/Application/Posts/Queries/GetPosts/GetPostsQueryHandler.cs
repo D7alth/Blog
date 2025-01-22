@@ -1,4 +1,4 @@
-using Blog.Domain.Entities.Posts.Repositories;
+using Blog.Domain.Post.Repositories;
 using MediatR;
 
 namespace Blog.Application.Features.Posts.Queries.GetPosts;

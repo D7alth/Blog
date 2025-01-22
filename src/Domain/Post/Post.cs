@@ -1,12 +1,11 @@
-using Blog.Domain.Entities.Posts.ValueObjects;
+using Blog.Domain.Post.ValueObjects;
+using Blog.Domain.Shared;
 
-namespace Blog.Domain.Entities.Posts;
+namespace Blog.Domain.Post;
 
 public sealed class Post : Entity<int>
 {
     public string? Title { get; }
-
-    // TODO: Using a Markdown editor to content management
     public string? Content { get; }
     public DateTime CreatedAt { get; }
     public DateTime UpdatedAt { get; }

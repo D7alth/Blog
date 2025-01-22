@@ -1,4 +1,4 @@
-namespace Blog.Domain;
+namespace Blog.Domain.Shared;
 
 public abstract class Entity<TId>(TId id) : IEquatable<Entity<TId>>
     where TId : notnull
