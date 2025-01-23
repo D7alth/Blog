@@ -1,14 +1,15 @@
 using Blog.Domain.Shared;
+using Blog.Domain.Shared.Exceptions;
 
-namespace Blog.Domain.Post.ValueObjects;
+namespace Blog.Domain.Posts.ValueObjects;
 
-public sealed class Tag(string Name) : ValueObject
+public sealed class Tag(string name) : ValueObject
 {
-    public string Name { get; } = Name;
+    public string Name { get; } = name;
 
     public static Tag Create(string name) =>
         string.IsNullOrEmpty(name)
-            ? throw new ArgumentException("Tag name cannot be null")
+            ? throw new NullOrEmptyException(nameof(name))
             : new Tag(name);
 
     protected override IEnumerable<object> GetEqualityComponents()

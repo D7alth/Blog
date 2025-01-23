@@ -1,7 +1,6 @@
-using Blog.Domain.Post;
-using Blog.Domain.Post.Repositories;
+using Blog.Domain.Posts;
+using Blog.Domain.Posts.Repositories;
 using Blog.Infrastructure.Persistence;
-using Markdig;
 using Microsoft.EntityFrameworkCore;
 
 namespace Blog.Infrastructure.Domain.Entities.Posts.Repository;

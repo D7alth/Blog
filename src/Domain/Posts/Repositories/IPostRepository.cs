@@ -1,4 +1,4 @@
-namespace Blog.Domain.Post.Repositories;
+namespace Blog.Domain.Posts.Repositories;
 
 public interface IPostRepository
 {

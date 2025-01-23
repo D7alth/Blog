@@ -1,6 +1,6 @@
 using Blog.Application.Posts.Services;
-using Blog.Domain.Post;
-using Blog.Domain.Post.Repositories;
+using Blog.Domain.Posts;
+using Blog.Domain.Posts.Repositories;
 using MediatR;
 
 namespace Blog.Application.Posts.Commands.CreatePost;

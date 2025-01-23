@@ -1,4 +1,4 @@
-using Blog.Domain.Post;
+using Blog.Domain.Posts;
 using Blog.Infrastructure.Configuration;
 using Microsoft.EntityFrameworkCore;
 

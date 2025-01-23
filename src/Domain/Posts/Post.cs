@@ -1,16 +1,17 @@
-using Blog.Domain.Post.ValueObjects;
+using Blog.Domain.Posts.ValueObjects;
 using Blog.Domain.Shared;
+using Blog.Domain.Shared.Exceptions;
 
-namespace Blog.Domain.Post;
+namespace Blog.Domain.Posts;
 
-public sealed class Post : Entity<int>
+public sealed class Post : Entity<int>, IAggregateRoot
 {
     public string? Title { get; }
     public string? Content { get; }
     public DateTime CreatedAt { get; }
     public DateTime UpdatedAt { get; }
     public List<Tag> Tags { get; } = [];
-    const int TitleMaxLength = 60;
+    private const int TitleMaxLength = 60;
 
     private Post()
         : base(default) { }
@@ -26,13 +27,13 @@ public sealed class Post : Entity<int>
 
     public static Post Create(string title, string content) =>
         string.IsNullOrEmpty(title)
-            ? throw new ArgumentException("Title cannot be null")
+            ? throw new NullOrEmptyException(nameof(title))
             : title.Length > TitleMaxLength
                 ? throw new ArgumentException(
                     $"Title is more than limit: {TitleMaxLength} characters"
                 )
                 : string.IsNullOrEmpty(content)
-                    ? throw new ArgumentException("Content cannot be null")
+                    ? throw new NullOrEmptyException(nameof(content))
                     : new Post(title, content, DateTime.Now);
 
     public void AddTag(string tag)
