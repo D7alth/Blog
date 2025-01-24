@@ -12,19 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Application\**" />
-    <Compile Remove="Class1.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Remove="Application\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="Application\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Markdig" Version="0.40.0" />
     <PackageReference Include="MediatR" Version="12.4.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0" />

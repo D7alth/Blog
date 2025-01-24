@@ -1,7 +1,7 @@
 using Blog.Application.Posts.Services;
 using Markdig;
 
-namespace Blog.Infrastructure.Application.Entities.Posts.Services;
+namespace Blog.Infrastructure.Application.Posts.Services;
 
 public sealed class TextProcessor() : ITextProcessor
 {
