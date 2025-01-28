@@ -1,5 +1,7 @@
 using Blog.Application.Posts.Commands.CreatePost;
+using Blog.Application.Posts.Services;
 using Blog.Domain.Posts.Repositories;
+using Blog.Infrastructure.Application.Posts.Services;
 using Blog.Infrastructure.Configuration;
 using Blog.Infrastructure.Configuration.Providers;
 using Blog.Infrastructure.Domain.Entities.Posts.Repository;
@@ -13,8 +15,10 @@ namespace Blog.Infrastructure;
 
 public static class ServiceRegistration
 {
-    public static void AddInfrastructure(this IServiceCollection services,
-        IConfiguration configuration)
+    public static void AddInfrastructure(
+        this IServiceCollection services,
+        IConfiguration configuration
+    )
     {
         services.AddSingleton<IDbContextOptionsProvider>(provider => new SqlLiteDbContextProvider(
             configuration.GetConnectionString("DefaultConnection")!
@@ -25,6 +29,7 @@ public static class ServiceRegistration
             return new ApplicationContext(dbContextOptionsProvider);
         });
         services.AddScoped<IPostRepository, PostRepository>();
+        services.AddScoped<ITextProcessor, TextProcessor>();
         services.AddScoped<IUnitOfWork, UnitOfWork<ApplicationContext>>();
         services.AddMediatR(cfg =>
             cfg.RegisterServicesFromAssemblies(typeof(CreatePostRequestHandler).Assembly)

@@ -1,4 +1,5 @@
 using Blog.Domain.Posts;
+using Blog.Domain.Shared.Exceptions;
 using Bogus;
 
 namespace Blog.Tests.Domain.Posts;
@@ -53,7 +54,7 @@ public class PostTest
 
     [Test]
     public void ShouldNotCreatePostWithEmptyTitle() =>
-        Assert.Throws<ArgumentException>(() => Post.Create("", Content));
+        Assert.Throws<NullOrEmptyException>(() => Post.Create("", Content));
 
     [Test]
     public void ShouldNotCreatePostWithTitleTooBig() =>
@@ -63,5 +64,5 @@ public class PostTest
 
     [Test]
     public void ShouldNotCreatePostWithEmptyContent() =>
-        Assert.Throws<ArgumentException>(() => Post.Create(Title, ""));
+        Assert.Throws<NullOrEmptyException>(() => Post.Create(Title, ""));
 }
