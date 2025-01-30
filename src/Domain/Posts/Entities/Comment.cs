@@ -9,13 +9,10 @@ public sealed class Comment : Entity<int>
     public DateTime CreatedAt { get; }
     public Guid AuthorId { get; private set; }
     public int PostId { get; private set; }
-    public List<Comment> Comments { get; set; }
+    public List<Comment> Comments { get; set; } = [];
 
     private Comment()
-        : base(default)
-    {
-        Comments = [];
-    }
+        : base(default) { }
 
     private Comment(Guid authorId, int postId, string content)
         : base(default)
@@ -48,6 +45,6 @@ public sealed class Comment : Entity<int>
             throw new NullOrEmptyException(nameof(content));
         if (!isValidAuthor)
             throw new NotValidException(nameof(authorId));
-        Comments.Add(new Comment(authorId, this.PostId, content));
+        Comments.Add(new Comment(authorId, PostId, content));
     }
 }
