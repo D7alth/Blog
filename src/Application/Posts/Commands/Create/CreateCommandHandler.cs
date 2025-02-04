@@ -3,14 +3,12 @@ using Blog.Domain.Posts;
 using Blog.Domain.Posts.Repositories;
 using MediatR;
 
-namespace Blog.Application.Posts.Commands.CreatePost;
+namespace Blog.Application.Posts.Commands.Create;
 
-public sealed class CreatePostRequestHandler(
-    IPostRepository postRepository,
-    ITextProcessor processor
-) : IRequestHandler<CreatePostRequest>
+public sealed class CreateCommandHandler(IPostRepository postRepository, ITextProcessor processor)
+    : IRequestHandler<CreateCommand>
 {
-    public Task Handle(CreatePostRequest request, CancellationToken cancellationToken)
+    public Task Handle(CreateCommand request, CancellationToken cancellationToken)
     {
         var sanitizerContent = processor.Sanitize(request.Content);
         var post = Post.Create(request.Title, sanitizerContent);

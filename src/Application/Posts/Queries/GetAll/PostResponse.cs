@@ -1,6 +1,6 @@
 namespace Blog.Application.Features.Posts.Queries.GetPosts;
 
-public sealed record PostsResponse(
+public sealed record PostResponse(
     int Id,
     string Title,
     string Content,

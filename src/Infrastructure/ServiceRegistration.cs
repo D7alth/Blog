@@ -1,4 +1,4 @@
-using Blog.Application.Posts.Commands.CreatePost;
+using Blog.Application.Posts.Commands.Create;
 using Blog.Application.Posts.Services;
 using Blog.Domain.Posts.Repositories;
 using Blog.Infrastructure.Application.Posts.Services;
@@ -32,7 +32,7 @@ public static class ServiceRegistration
         services.AddScoped<ITextProcessor, TextProcessor>();
         services.AddScoped<IUnitOfWork, UnitOfWork<ApplicationContext>>();
         services.AddMediatR(cfg =>
-            cfg.RegisterServicesFromAssemblies(typeof(CreatePostRequestHandler).Assembly)
+            cfg.RegisterServicesFromAssemblies(typeof(CreateCommandHandler).Assembly)
         );
         services.Decorate(typeof(IRequestHandler<>), typeof(UnitOfWorkCommandHandlerDecorator<>));
     }
