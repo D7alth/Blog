@@ -3,9 +3,8 @@ using Blog.Domain.Posts.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Newtonsoft.Json;
 
-namespace Blog.Infrastructure.Domain.Entities.Posts;
+namespace Blog.Infrastructure.Domain.Posts;
 
 internal sealed class PostEntityTypeConfiguration : IEntityTypeConfiguration<Post>
 {
@@ -21,11 +20,11 @@ internal sealed class PostEntityTypeConfiguration : IEntityTypeConfiguration<Pos
             .HasColumnType("text")
             .HasColumnName("tags")
             .HasConversion(
-                t => JsonConvert.SerializeObject(t.Select(tag => tag.Name).ToList()),
-                t =>
-                    JsonConvert
-                        .DeserializeObject<List<Tag>>(t)!
-                        .Select(tag => Tag.Create(tag.Name))
+                t => string.Join(",", t.Select(tagName => tagName.Name)),
+                names =>
+                    names
+                        .Split(',', StringSplitOptions.TrimEntries)
+                        .Select(name => Tag.Create(name))
                         .ToList()
             )
             .Metadata.SetValueComparer(

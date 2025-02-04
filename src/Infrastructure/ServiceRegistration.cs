@@ -20,7 +20,7 @@ public static class ServiceRegistration
         IConfiguration configuration
     )
     {
-        services.AddSingleton<IDbContextOptionsProvider>(provider => new SqlLiteDbContextProvider(
+        services.AddSingleton<IDbContextOptionsProvider>(provider => new SqlServerDbContextProvider(
             configuration.GetConnectionString("DefaultConnection")!
         ));
         services.AddScoped(provider =>
