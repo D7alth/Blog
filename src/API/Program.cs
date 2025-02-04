@@ -1,12 +1,11 @@
-using System.Reflection;
-using Blog.API.Extensions;
 using Blog.Infrastructure;
+using Carter;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddEndpoints(Assembly.GetExecutingAssembly());
+builder.Services.AddCarter();
 
 ServiceRegistration.AddInfrastructure(builder.Services, builder.Configuration);
 
@@ -19,7 +18,5 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
-app.MapEndpoints();
-
+app.MapCarter();
 app.Run();
