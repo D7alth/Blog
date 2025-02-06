@@ -14,8 +14,7 @@ public sealed class PostRepository(ApplicationContext context) : IPostRepository
 
     public async Task<List<Post>> GetAll() => await context.Posts.ToListAsync();
 
-    public async Task<Post> GetById(int id) =>
-        await context.Posts.FindAsync(id) ?? throw new KeyNotFoundException($"Post not found");
+    public async Task<Post> GetById(int id) => await context.Posts.FindAsync(id) ?? null!;
 
     public void Update(Post post)
     {
