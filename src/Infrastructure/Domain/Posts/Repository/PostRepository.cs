@@ -3,7 +3,7 @@ using Blog.Domain.Posts.Repositories;
 using Blog.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
-namespace Blog.Infrastructure.Domain.Entities.Posts.Repository;
+namespace Blog.Infrastructure.Domain.Posts.Repository;
 
 public sealed class PostRepository(ApplicationContext context) : IPostRepository
 {
@@ -22,9 +22,5 @@ public sealed class PostRepository(ApplicationContext context) : IPostRepository
         throw new NotImplementedException();
     }
 
-    public void Remove(int id)
-    {
-        var post = context.Posts.Find(id) ?? throw new KeyNotFoundException($"Post not found");
-        context.Remove(post);
-    }
+    public void Remove(Post post) => context.Remove(post);
 }
