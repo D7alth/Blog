@@ -15,7 +15,7 @@ internal sealed class CommentTypeConfiguration : IEntityTypeConfiguration<Commen
         builder.Property(e => e.PostId).HasColumnName("post_id");
         builder.Property(e => e.Content).HasColumnName("content");
         builder
-            .HasMany<Comment>(e => e.Comments)
+            .HasMany(e => e.Comments)
             .WithOne()
             .HasForeignKey("ParentCommentId")
             .OnDelete(DeleteBehavior.Restrict);
