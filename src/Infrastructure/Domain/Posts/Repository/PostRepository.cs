@@ -7,10 +7,7 @@ namespace Blog.Infrastructure.Domain.Posts.Repository;
 
 public sealed class PostRepository(ApplicationContext context) : IPostRepository
 {
-    public void Add(Post post)
-    {
-        context.Posts.Add(post);
-    }
+    public void Add(Post post) => context.Posts.Add(post);
 
     public async Task<List<Post>> GetAll() => await context.Posts.ToListAsync();
 

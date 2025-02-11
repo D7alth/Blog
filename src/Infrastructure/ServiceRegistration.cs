@@ -1,10 +1,10 @@
 using Blog.Application.Posts.Commands.Create;
 using Blog.Application.Posts.Services;
 using Blog.Domain.Posts.Repositories;
-using Blog.Infrastructure.Application.Posts.Services;
+using Blog.Infrastructure.Application.Posts;
 using Blog.Infrastructure.Configuration;
 using Blog.Infrastructure.Configuration.Providers;
-using Blog.Infrastructure.Domain.Entities.Posts.Repository;
+using Blog.Infrastructure.Domain.Posts.Repository;
 using Blog.Infrastructure.Persistence;
 using Blog.Infrastructure.UnitOfWork;
 using MediatR;

@@ -10,8 +10,7 @@ public sealed class CreateCommandHandler(IPostRepository postRepository, ITextPr
 {
     public Task Handle(CreateCommand request, CancellationToken cancellationToken)
     {
-        var sanitizerContent = processor.Sanitize(request.Content);
-        var post = Post.Create(request.Title, sanitizerContent);
+        var post = Post.Create(request.Title, processor.Sanitize(request.Content));
         postRepository.Add(post);
         return Task.CompletedTask;
     }
