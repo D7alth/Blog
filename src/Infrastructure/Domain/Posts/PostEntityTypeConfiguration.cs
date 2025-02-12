@@ -12,6 +12,7 @@ internal sealed class PostEntityTypeConfiguration : IEntityTypeConfiguration<Pos
         builder.ToTable("posts");
         builder.HasKey(e => e.Id);
         builder.Property(e => e.Title).HasColumnName("title").HasMaxLength(60);
+        builder.Property(e => e.Content).HasColumnName("Content");
         builder.Property(e => e.CreatedAt).HasColumnName("created_at");
         builder.Property(e => e.UpdatedAt).HasColumnName("updated_at");
         builder
