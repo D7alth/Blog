@@ -1,4 +1,3 @@
-using Blog.Application.Features.Posts.Queries.GetPosts;
 using Blog.Domain.Posts.Repositories;
 using MediatR;
 
@@ -17,6 +16,7 @@ public sealed class GetAllQueryHandler(IPostRepository postRepository)
             post.Id,
             post.Title!,
             post.Content!,
+            post.Tags,
             post.CreatedAt,
             post.UpdatedAt
         ));

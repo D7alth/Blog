@@ -1,4 +1,3 @@
-using Blog.Application.Features.Posts.Queries.GetPosts;
 using MediatR;
 
 namespace Blog.Application.Posts.Queries.GetAll;
