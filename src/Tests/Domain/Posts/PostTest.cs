@@ -28,10 +28,9 @@ public class PostTest
     }
 
     [Test]
-    public void ShouldAddTagToPost()
+    public void ShouldCreatePostWithTags()
     {
-        var post = Post.Create(Title, Content);
-        _tags.ForEach(post.AddTag);
+        var post = Post.Create(Title, Content, _tags);
         Assert.Multiple(() =>
         {
             Assert.That(post.Tags.First().Name, Is.EqualTo(_tags.First()));
@@ -40,12 +39,10 @@ public class PostTest
     }
 
     [Test]
-    public void ShouldNotAddDuplicateTagsToSamePost()
+    public void ShouldNotCreatePostWithDuplicateTags()
     {
-        var post = Post.Create(Title, Content);
-        post.AddTag(_tags[0]);
-        post.AddTag(_tags[0]);
-        post.AddTag(_tags[0]);
+        var duplicateTagArr = new List<string>() { _tags[0], _tags[0], _tags[0] };
+        var post = Post.Create(Title, Content, duplicateTagArr);
         Assert.That(post.Tags, Has.Count.EqualTo(1));
     }
 

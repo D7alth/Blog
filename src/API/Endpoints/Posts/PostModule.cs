@@ -34,7 +34,7 @@ public class PostModule() : CarterModule("/api/posts")
             "",
             async (CreateRequest request, IMediator mediator) =>
             {
-                var command = new CreateCommand(request.Title, request.Content);
+                var command = new CreateCommand(request.Title, request.Content, request.Tags);
                 await mediator.Send(command);
                 return Results.Created();
             }

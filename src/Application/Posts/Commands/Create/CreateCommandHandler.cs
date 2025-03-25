@@ -14,7 +14,8 @@ public sealed class CreateCommandHandler(
     {
         var post = Post.Create(
             request.Title,
-            textProcessor.SanitizeMarkdownToHtml(request.Content)
+            textProcessor.SanitizeMarkdownToHtml(request.Content),
+            request.Tags
         );
         postRepository.Add(post);
         return Task.CompletedTask;
