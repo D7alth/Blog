@@ -25,7 +25,10 @@ class CreateCommandHandlerTest
         _handler.Handle(command, CancellationToken.None);
         Assert.Multiple(() =>
         {
-            _textProcessor.Verify(r => r.Sanitize(It.Is<string>(s => s == content)), Times.Once);
+            _textProcessor.Verify(
+                r => r.SanitizeMarkdownToHtml(It.Is<string>(s => s == content)),
+                Times.Once
+            );
             _postRepository.Verify(
                 r => r.Add(It.Is<Post>(p => p.Title == title && p.Content == content)),
                 Times.Once
@@ -34,5 +37,7 @@ class CreateCommandHandlerTest
     }
 
     private static void SetUpToGetProcessedText(string content) =>
-        _textProcessor.Setup(s => s.Sanitize(It.Is<string>(s => s == content))).Returns(content);
+        _textProcessor
+            .Setup(s => s.SanitizeMarkdownToHtml(It.Is<string>(s => s == content)))
+            .Returns(content);
 }

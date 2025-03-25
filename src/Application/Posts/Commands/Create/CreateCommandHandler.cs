@@ -5,12 +5,17 @@ using MediatR;
 
 namespace Blog.Application.Posts.Commands.Create;
 
-public sealed class CreateCommandHandler(IPostRepository postRepository, ITextProcessor processor)
-    : IRequestHandler<CreateCommand>
+public sealed class CreateCommandHandler(
+    IPostRepository postRepository,
+    ITextProcessor textProcessor
+) : IRequestHandler<CreateCommand>
 {
     public Task Handle(CreateCommand request, CancellationToken cancellationToken)
     {
-        var post = Post.Create(request.Title, processor.Sanitize(request.Content));
+        var post = Post.Create(
+            request.Title,
+            textProcessor.SanitizeMarkdownToHtml(request.Content)
+        );
         postRepository.Add(post);
         return Task.CompletedTask;
     }

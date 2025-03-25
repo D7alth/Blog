@@ -13,10 +13,7 @@ public sealed class PostRepository(ApplicationContext context) : IPostRepository
 
     public async Task<Post> GetById(int id) => await context.Posts.FindAsync(id) ?? null!;
 
-    public void Update(Post post)
-    {
-        throw new NotImplementedException();
-    }
+    public void Update(Post post) => context.Posts.Update(post);
 
     public void Remove(Post post) => context.Remove(post);
 }

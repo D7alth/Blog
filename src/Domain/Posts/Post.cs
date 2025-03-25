@@ -6,11 +6,11 @@ namespace Blog.Domain.Posts;
 
 public sealed class Post : Entity<int>, IAggregateRoot
 {
-    public string? Title { get; }
-    public string? Content { get; }
+    public string? Title { get; private set; }
+    public string? Content { get; private set; }
     public DateTime CreatedAt { get; }
-    public DateTime UpdatedAt { get; }
-    public List<Tag> Tags { get; } = [];
+    public DateTime UpdatedAt { get; private set; }
+    public List<Tag> Tags { get; private set; } = [];
     private const int TitleMaxLength = 60;
 
     private Post()
@@ -41,5 +41,16 @@ public sealed class Post : Entity<int>, IAggregateRoot
         if (Tags.Any(t => t.Name == tag))
             return;
         Tags.Add(Tag.Create(tag));
+    }
+
+    public void Update(string? title = null, string? content = null)
+    {
+        if (string.IsNullOrEmpty(title) && string.IsNullOrEmpty(content))
+            throw new NullOrEmptyException(nameof(title) + "," + nameof(content));
+        if (!string.IsNullOrEmpty(title))
+            Title = title;
+        if (!string.IsNullOrEmpty(content))
+            Content = content;
+        UpdatedAt = DateTime.Now;
     }
 }

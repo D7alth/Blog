@@ -5,7 +5,7 @@ namespace Blog.Infrastructure.Application.Posts;
 
 public sealed class TextProcessor() : ITextProcessor
 {
-    public string Sanitize(string content)
+    public string SanitizeMarkdownToHtml(string content)
     {
         var pipeline = new MarkdownPipelineBuilder()
             .UseAutoIdentifiers()

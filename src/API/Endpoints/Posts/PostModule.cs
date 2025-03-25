@@ -1,5 +1,6 @@
 using Blog.Application.Posts.Commands.Create;
 using Blog.Application.Posts.Commands.Delete;
+using Blog.Application.Posts.Commands.Update;
 using Blog.Application.Posts.Queries.GetAll;
 using Blog.Application.Posts.Queries.GetById;
 using Carter;
@@ -36,6 +37,16 @@ public class PostModule() : CarterModule("/api/posts")
                 var command = new CreateCommand(request.Title, request.Content);
                 await mediator.Send(command);
                 return Results.Created();
+            }
+        );
+
+        app.MapPut(
+            "{id:int}",
+            async (int id, UpdateRequest request, IMediator mediator) =>
+            {
+                var command = new UpdateCommand(id, request.Title, request.Content);
+                await mediator.Send(command);
+                return Results.NoContent();
             }
         );
 

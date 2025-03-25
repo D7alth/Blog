@@ -23,11 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Posts\Commands\" />
-    <Folder Include="Features\Posts\Queries\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Domain\Blog.Domain.csproj" />
   </ItemGroup>
 

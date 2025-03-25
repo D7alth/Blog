@@ -46,11 +46,31 @@ public class PostTest
         post.AddTag(_tags[0]);
         post.AddTag(_tags[0]);
         post.AddTag(_tags[0]);
+        Assert.That(post.Tags, Has.Count.EqualTo(1));
+    }
+
+    [Test]
+    public void ShouldUpdatePost()
+    {
+        var post = Post.Create(Title, Content);
+        var firstTimeUpdated = post.UpdatedAt;
+        post.Update("new title", "new content");
+        var secondTimeUpdated = post.UpdatedAt;
         Assert.Multiple(() =>
         {
-            Assert.That(post.Tags, Has.Count.EqualTo(1));
+            Assert.That(post.Title, Is.EqualTo("new title"));
+            Assert.That(post.Content, Is.EqualTo("new content"));
+            Assert.That(secondTimeUpdated, Is.Not.EqualTo(firstTimeUpdated));
         });
     }
+
+    [Test]
+    public void ShouldReturnExceptionWhenContentAndTitleIsNullToUpdate() =>
+        Assert.Throws<NullOrEmptyException>(() =>
+        {
+            var post = Post.Create(Title, Content);
+            post.Update();
+        });
 
     [Test]
     public void ShouldNotCreatePostWithEmptyTitle() =>
