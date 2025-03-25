@@ -1,10 +1,10 @@
 using Blog.Application.Articles.Commands.CreateArticle;
 using Blog.Application.Articles.Services;
-using Blog.Domain.Posts.Repositories;
-using Blog.Infrastructure.Application.Posts;
+using Blog.Domain.Articles.Repositories;
+using Blog.Infrastructure.Application.Articles;
 using Blog.Infrastructure.Configuration;
 using Blog.Infrastructure.Configuration.Providers;
-using Blog.Infrastructure.Domain.Posts.Repository;
+using Blog.Infrastructure.Domain.Articles.Repository;
 using Blog.Infrastructure.Persistence;
 using Blog.Infrastructure.UnitOfWork;
 using MediatR;
@@ -28,7 +28,7 @@ public static class ServiceRegistration
             var dbContextOptionsProvider = provider.GetRequiredService<IDbContextOptionsProvider>();
             return new ApplicationContext(dbContextOptionsProvider);
         });
-        services.AddScoped<IPostRepository, PostRepository>();
+        services.AddScoped<IArticleRepository, ArticleRepository>();
         services.AddScoped<ITextProcessor, TextProcessor>();
         services.AddScoped<IUnitOfWork, UnitOfWork<ApplicationContext>>();
         services.AddMediatR(cfg =>

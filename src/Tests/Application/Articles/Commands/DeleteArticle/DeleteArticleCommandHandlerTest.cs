@@ -1,42 +1,45 @@
 using Blog.Application.Articles.Commands.DeleteArticle;
-using Blog.Domain.Posts;
-using Blog.Domain.Posts.Repositories;
+using Blog.Domain.Articles;
+using Blog.Domain.Articles.Repositories;
 using Moq;
 using NUnit.Framework.Internal;
 
-namespace Blog.Tests.Application.Posts.Commands.Delete;
+namespace Blog.Tests.Application.Articles.Commands.DeleteArticle;
 
 [TestFixture]
 class DeleteArticleCommandHandlerTest
 {
-    private static readonly Mock<IPostRepository> _postRepository = new();
-    private static readonly DeleteArticleCommandHandler _handler = new(_postRepository.Object);
-    private static readonly Post _defaultPost = Post.Create("title", "content");
+    private static readonly Mock<IArticleRepository> _articleRepository = new();
+    private static readonly DeleteArticleCommandHandler _handler = new(_articleRepository.Object);
+    private static readonly Article _article = Article.Create("title", "content");
 
     [Test]
-    public async Task HandlerShouldDeletePost()
+    public async Task HandlerShouldDeleteArticle()
     {
-        var postId = 0;
-        SetupToGetPost(postId);
-        var command = new DeleteArticleCommand(postId);
+        var articleId = 0;
+        SetupToGetArticleById(articleId);
+        var command = new DeleteArticleCommand(articleId);
         await _handler.Handle(command, CancellationToken.None);
         Assert.Multiple(() =>
         {
-            _postRepository.Verify(r => r.GetById(It.Is<int>(p => p == postId)), Times.Once);
-            _postRepository.Verify(r => r.Remove(It.Is<Post>(p => p.Id == postId)), Times.Once);
+            _articleRepository.Verify(r => r.GetById(It.Is<int>(p => p == articleId)), Times.Once);
+            _articleRepository.Verify(
+                r => r.Remove(It.Is<Article>(p => p.Id == articleId)),
+                Times.Once
+            );
         });
     }
 
     [Test]
-    public void HandlerShouldThrowsKeyNotFoundWhenPostDoesExist()
+    public void HandlerShouldThrowsKeyNotFoundWhenArticleDoesExist()
     {
         var command = new DeleteArticleCommand(0);
-        _postRepository.Setup(r => r.GetById(It.IsAny<int>()))!.ReturnsAsync(null as Post);
+        _articleRepository.Setup(r => r.GetById(It.IsAny<int>()))!.ReturnsAsync(null as Article);
         Assert.ThrowsAsync<KeyNotFoundException>(
             () => _handler.Handle(command, CancellationToken.None)
         );
     }
 
-    private static void SetupToGetPost(int id) =>
-        _postRepository.Setup(r => r.GetById(It.Is<int>(i => i == id))).ReturnsAsync(_defaultPost);
+    private static void SetupToGetArticleById(int id) =>
+        _articleRepository.Setup(r => r.GetById(It.Is<int>(i => i == id))).ReturnsAsync(_article);
 }

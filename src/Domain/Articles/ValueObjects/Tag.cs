@@ -1,4 +1,4 @@
-namespace Blog.Domain.Posts.ValueObjects;
+namespace Blog.Domain.Articles.ValueObjects;
 
 public readonly partial struct Tag(string name)
 {

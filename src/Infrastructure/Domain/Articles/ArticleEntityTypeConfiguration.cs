@@ -1,15 +1,15 @@
-using Blog.Domain.Posts;
-using Blog.Domain.Posts.ValueObjects;
+using Blog.Domain.Articles;
+using Blog.Domain.Articles.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Blog.Infrastructure.Domain.Posts;
+namespace Blog.Infrastructure.Domain.Articles;
 
-internal sealed class PostEntityTypeConfiguration : IEntityTypeConfiguration<Post>
+internal sealed class ArticleEntityTypeConfiguration : IEntityTypeConfiguration<Article>
 {
-    public void Configure(EntityTypeBuilder<Post> builder)
+    public void Configure(EntityTypeBuilder<Article> builder)
     {
-        builder.ToTable("posts");
+        builder.ToTable("articles");
         builder.HasKey(e => e.Id);
         builder.Property(e => e.Title).HasColumnName("title").HasMaxLength(60);
         builder.Property(e => e.Content).HasColumnName("Content");

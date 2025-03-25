@@ -1,4 +1,4 @@
-using Blog.Domain.Posts.ValueObjects;
+using Blog.Domain.Articles.ValueObjects;
 
 namespace Blog.Tests.Domain.ValueObjects;
 

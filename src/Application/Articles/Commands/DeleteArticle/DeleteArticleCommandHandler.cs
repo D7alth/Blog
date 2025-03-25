@@ -1,16 +1,16 @@
-using Blog.Domain.Posts.Repositories;
+using Blog.Domain.Articles.Repositories;
 using MediatR;
 
 namespace Blog.Application.Articles.Commands.DeleteArticle;
 
-public sealed class DeleteArticleCommandHandler(IPostRepository postRepository)
+public sealed class DeleteArticleCommandHandler(IArticleRepository articleRepository)
     : IRequestHandler<DeleteArticleCommand>
 {
     public async Task Handle(DeleteArticleCommand request, CancellationToken cancellationToken)
     {
-        var post =
-            await postRepository.GetById(request.Id)
-            ?? throw new KeyNotFoundException($"Post with Id {request.Id} not found");
-        postRepository.Remove(post);
+        var article =
+            await articleRepository.GetById(request.Id)
+            ?? throw new KeyNotFoundException($"Article with Id {request.Id} not found");
+        articleRepository.Remove(article);
     }
 }

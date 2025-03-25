@@ -1,4 +1,4 @@
-using Blog.Domain.Posts;
+using Blog.Domain.Articles;
 using Blog.Infrastructure.Configuration;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,7 +12,7 @@ public class ApplicationContext(IDbContextOptionsProvider dbContextOptionsProvid
             dbContextOptionsProvider.Configure(optionsBuilder);
     }
 
-    public DbSet<Post> Posts { get; set; }
+    public DbSet<Article> Article { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

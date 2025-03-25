@@ -1,6 +1,6 @@
 using Blog.Application.Articles.Queries.GetArticleById;
-using Blog.Domain.Posts;
-using Blog.Domain.Posts.Repositories;
+using Blog.Domain.Articles;
+using Blog.Domain.Articles.Repositories;
 using Moq;
 using NUnit.Framework.Internal;
 
@@ -9,26 +9,26 @@ namespace Blog.Tests.Application.Articles.Queries.GetArticleById;
 [TestFixture]
 class GetArticleByIdQueryHandlerTest
 {
-    private static readonly Mock<IPostRepository> _postRepository = new();
-    private static readonly Post _post = Post.Create("title", "content");
-    private static readonly GetArticleByIdQueryHandler _handler = new(_postRepository.Object);
+    private static readonly Mock<IArticleRepository> _articlesRepository = new();
+    private static readonly Article _article = Article.Create("title", "content");
+    private static readonly GetArticleByIdQueryHandler _handler = new(_articlesRepository.Object);
 
     [Test]
-    public async Task HandlerShouldReturnAllPosts()
+    public async Task HandlerShouldReturnAllArticles()
     {
-        var postId = 0;
-        SetUpGetById(postId);
-        var query = new GetArticleByIdQuery(postId);
-        var post = await _handler.Handle(query, CancellationToken.None);
+        var articleId = 0;
+        SetupToGetArticleById(articleId);
+        var query = new GetArticleByIdQuery(articleId);
+        var article = await _handler.Handle(query, CancellationToken.None);
         Assert.Multiple(() =>
         {
-            Assert.That(post.Title, Is.EqualTo(_post.Title));
-            Assert.That(post.Content, Is.EqualTo(_post.Content));
-            Assert.That(post.Tags, Has.Count.EqualTo(_post.Tags.Count));
+            Assert.That(article.Title, Is.EqualTo(_article.Title));
+            Assert.That(article.Content, Is.EqualTo(_article.Content));
+            Assert.That(article.Tags, Has.Count.EqualTo(_article.Tags.Count));
         });
-        _postRepository.Verify(r => r.GetById(It.Is<int>(i => i == postId)), Times.Once);
+        _articlesRepository.Verify(r => r.GetById(It.Is<int>(i => i == articleId)), Times.Once);
     }
 
-    private static void SetUpGetById(int id) =>
-        _postRepository.Setup(s => s.GetById(It.Is<int>(i => i == id))).ReturnsAsync(_post);
+    private static void SetupToGetArticleById(int id) =>
+        _articlesRepository.Setup(s => s.GetById(It.Is<int>(i => i == id))).ReturnsAsync(_article);
 }

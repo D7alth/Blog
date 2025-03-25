@@ -1,8 +1,8 @@
-using Blog.Domain.Posts.Entities;
+using Blog.Domain.Articles.Entities;
 using Blog.Domain.Shared.Exceptions;
 using Bogus;
 
-namespace Blog.Tests.Domain.Posts.Entities;
+namespace Blog.Tests.Domain.Articles.Entities;
 
 [TestFixture]
 public class CommentTest
@@ -17,33 +17,33 @@ public class CommentTest
     [Test]
     public void ShouldCreateComment()
     {
-        var postId = _faker.Random.Int();
-        var comment = Comment.Create(AuthorId, postId, Content, true, true);
+        var articleId = _faker.Random.Int();
+        var comment = Comment.Create(AuthorId, articleId, Content, true, true);
         Assert.Multiple(() =>
         {
             Assert.That(comment.AuthorId, Is.EqualTo(AuthorId));
             Assert.That(comment.Content, Is.EqualTo(Content));
-            Assert.That(comment.PostId, Is.EqualTo(postId));
+            Assert.That(comment.ArticleId, Is.EqualTo(articleId));
         });
     }
 
     [Test]
     public void ShouldReplyComment()
     {
-        var postId = _faker.Random.Int();
-        var comment = Comment.Create(AuthorId, postId, Content, true, true);
+        var articleId = _faker.Random.Int();
+        var comment = Comment.Create(AuthorId, articleId, Content, true, true);
         comment.Reply(AuthorId, Content, true);
         Assert.Multiple(() =>
         {
             Assert.That(comment.AuthorId, Is.EqualTo(AuthorId));
             Assert.That(comment.Content, Is.EqualTo(Content));
-            Assert.That(comment.PostId, Is.EqualTo(postId));
-            Assert.That(comment.Comments.First().PostId, Is.EqualTo(postId));
+            Assert.That(comment.ArticleId, Is.EqualTo(articleId));
+            Assert.That(comment.Comments.First().ArticleId, Is.EqualTo(articleId));
         });
     }
 
     [Test]
-    public void ShouldNotCreateCommentWithPostIdInvalid() =>
+    public void ShouldNotCreateCommentWithArticleIdInvalid() =>
         Assert.Throws<NotValidException>(
             () => Comment.Create(AuthorId, _faker.Random.Int(), Content, false, true)
         );
@@ -55,7 +55,7 @@ public class CommentTest
         );
 
     [Test]
-    public void ShouldNotCreatePostWithEmptyContent() =>
+    public void ShouldNotCreateArticleWithEmptyContent() =>
         Assert.Throws<NullOrEmptyException>(
             () => Comment.Create(AuthorId, _faker.Random.Int(), "", true, true)
         );

@@ -1,8 +1,8 @@
-using Blog.Domain.Posts.Entities;
+using Blog.Domain.Articles.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Blog.Infrastructure.Domain.Posts;
+namespace Blog.Infrastructure.Domain.Articles;
 
 internal sealed class CommentTypeConfiguration : IEntityTypeConfiguration<Comment>
 {
@@ -12,7 +12,7 @@ internal sealed class CommentTypeConfiguration : IEntityTypeConfiguration<Commen
         builder.HasKey(e => e.Id);
         builder.Property(e => e.AuthorId).HasColumnName("author_id");
         builder.Property(e => e.CreatedAt).HasColumnName("created_at");
-        builder.Property(e => e.PostId).HasColumnName("post_id");
+        builder.Property(e => e.ArticleId).HasColumnName("article_id");
         builder.Property(e => e.Content).HasColumnName("content");
         builder
             .HasMany(e => e.Comments)

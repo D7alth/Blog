@@ -8,7 +8,7 @@ using MediatR;
 
 namespace Blog.API.Endpoints.Articles;
 
-public class PostModule() : CarterModule("/api/articles")
+public class ArticleModule() : CarterModule("/api/articles")
 {
     public override void AddRoutes(IEndpointRouteBuilder app)
     {
@@ -16,17 +16,17 @@ public class PostModule() : CarterModule("/api/articles")
             "{id:int}",
             async (int id, IMediator mediator) =>
             {
-                var post = await mediator.Send(new GetArticleByIdQuery(id));
-                return Results.Ok(post);
+                var article = await mediator.Send(new GetArticleByIdQuery(id));
+                return Results.Ok(article);
             }
         );
 
         app.MapGet(
-            "posts",
+            "",
             async (IMediator mediator) =>
             {
-                var posts = await mediator.Send(new GetAllArticlesQuery());
-                return Results.Ok(posts);
+                var articles = await mediator.Send(new GetAllArticlesQuery());
+                return Results.Ok(articles);
             }
         );
 

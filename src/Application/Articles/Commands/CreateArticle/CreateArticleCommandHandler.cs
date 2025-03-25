@@ -1,23 +1,23 @@
 using Blog.Application.Articles.Services;
-using Blog.Domain.Posts;
-using Blog.Domain.Posts.Repositories;
+using Blog.Domain.Articles;
+using Blog.Domain.Articles.Repositories;
 using MediatR;
 
 namespace Blog.Application.Articles.Commands.CreateArticle;
 
 public sealed class CreateArticleCommandHandler(
-    IPostRepository postRepository,
+    IArticleRepository articleRepository,
     ITextProcessor textProcessor
 ) : IRequestHandler<CreateArticleCommand>
 {
     public Task Handle(CreateArticleCommand request, CancellationToken cancellationToken)
     {
-        var post = Post.Create(
+        var article = Article.Create(
             request.Title,
             textProcessor.SanitizeMarkdownToHtml(request.Content),
             request.Tags
         );
-        postRepository.Add(post);
+        articleRepository.Add(article);
         return Task.CompletedTask;
     }
 }

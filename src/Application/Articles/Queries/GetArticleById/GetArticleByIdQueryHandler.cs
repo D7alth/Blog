@@ -1,9 +1,9 @@
-using Blog.Domain.Posts.Repositories;
+using Blog.Domain.Articles.Repositories;
 using MediatR;
 
 namespace Blog.Application.Articles.Queries.GetArticleById;
 
-public sealed class GetArticleByIdQueryHandler(IPostRepository postRepository)
+public sealed class GetArticleByIdQueryHandler(IArticleRepository articleRepository)
     : IRequestHandler<GetArticleByIdQuery, ArticleResponse>
 {
     public async Task<ArticleResponse> Handle(
@@ -11,7 +11,13 @@ public sealed class GetArticleByIdQueryHandler(IPostRepository postRepository)
         CancellationToken cancellationToken
     )
     {
-        var post = await postRepository.GetById(request.Id);
-        return new(post.Title!, post.Content!, post.Tags, post.CreatedAt, post.UpdatedAt);
+        var article = await articleRepository.GetById(request.Id);
+        return new(
+            article.Title!,
+            article.Content!,
+            article.Tags,
+            article.CreatedAt,
+            article.UpdatedAt
+        );
     }
 }
