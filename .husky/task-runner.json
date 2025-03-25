@@ -1,0 +1,63 @@
+{
+  "$schema": "https://alirezanet.github.io/Husky.Net/schema.json",
+  "tasks": [
+    {
+      "name": "Run formatter (csharpier)",
+      "command": "dotnet",
+      "args": [
+        "csharpier",
+        "./src/"
+      ],
+      "include": [
+        "**/*.cs"
+      ]
+    },
+    {
+      "name": "Run Tests",
+      "command": "dotnet",
+      "args": [
+        "test",
+        "./src/"
+      ],
+      "include": [
+        "**/*.csproj"
+      ]
+    },
+    {
+      "name": "Build Applications",
+      "command": "dotnet",
+      "args": [
+        "build",
+        "./src/"
+      ]
+    },
+    {
+      "name": "warning-check",
+      "command": "dotnet",
+      "group": "pre-push",
+      "args": [
+        "build",
+        "/warnaserror"
+      ],
+      "include": [
+        "**/*.cs"
+      ]
+    },
+    {
+      "name": "Welcome",
+      "output": "always",
+      "command": "bash",
+      "args": [
+        "-c",
+        "echo Nice work! 🥂"
+      ],
+      "windows": {
+        "command": "cmd",
+        "args": [
+          "/c",
+          "echo Nice work! 🥂"
+        ]
+      }
+    }
+  ]
+}
