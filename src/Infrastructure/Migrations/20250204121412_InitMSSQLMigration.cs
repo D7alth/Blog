@@ -15,7 +15,8 @@ namespace Blog.Infrastructure.Migrations
                 name: "comments",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table
+                        .Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     content = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -31,16 +32,23 @@ namespace Blog.Infrastructure.Migrations
                         column: x => x.ParentCommentId,
                         principalTable: "comments",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
+                        onDelete: ReferentialAction.Restrict
+                    );
+                }
+            );
 
             migrationBuilder.CreateTable(
                 name: "posts",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table
+                        .Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    title = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: true),
+                    title = table.Column<string>(
+                        type: "nvarchar(60)",
+                        maxLength: 60,
+                        nullable: true
+                    ),
                     created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
                     updated_at = table.Column<DateTime>(type: "datetime2", nullable: false),
                     tags = table.Column<string>(type: "text", nullable: false)
@@ -48,22 +56,22 @@ namespace Blog.Infrastructure.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_posts", x => x.Id);
-                });
+                }
+            );
 
             migrationBuilder.CreateIndex(
                 name: "IX_comments_ParentCommentId",
                 table: "comments",
-                column: "ParentCommentId");
+                column: "ParentCommentId"
+            );
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "comments");
+            migrationBuilder.DropTable(name: "comments");
 
-            migrationBuilder.DropTable(
-                name: "posts");
+            migrationBuilder.DropTable(name: "posts");
         }
     }
 }

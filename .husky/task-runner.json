@@ -6,7 +6,7 @@
       "command": "dotnet",
       "args": [
         "csharpier",
-        "./src/"
+        "./"
       ],
       "include": [
         "**/*.cs"
@@ -17,7 +17,7 @@
       "command": "dotnet",
       "args": [
         "test",
-        "./src/"
+        "./"
       ],
       "include": [
         "**/*.csproj"
@@ -28,7 +28,7 @@
       "command": "dotnet",
       "args": [
         "build",
-        "./src/"
+        "./"
       ]
     },
     {
@@ -42,22 +42,6 @@
       "include": [
         "**/*.cs"
       ]
-    },
-    {
-      "name": "Welcome",
-      "output": "always",
-      "command": "bash",
-      "args": [
-        "-c",
-        "echo Nice work! 🥂"
-      ],
-      "windows": {
-        "command": "cmd",
-        "args": [
-          "/c",
-          "echo Nice work! 🥂"
-        ]
-      }
     }
   ]
 }
