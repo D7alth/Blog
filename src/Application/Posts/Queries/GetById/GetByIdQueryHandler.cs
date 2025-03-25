@@ -12,6 +12,6 @@ public sealed class GetByIdQueryHandler(IPostRepository postRepository)
     )
     {
         var post = await postRepository.GetById(request.Id);
-        return new(post.Title!, post.Content!, post.CreatedAt, post.UpdatedAt);
+        return new(post.Title!, post.Content!, post.Tags, post.CreatedAt, post.UpdatedAt);
     }
 }
