@@ -33,6 +33,7 @@ class GetAllQueryHandlerTest
                 Has.Length.EqualTo(_postList.First().GetType().GetProperties().Length)
             );
         });
+        _postRepository.Verify(r => r.GetAll(), Times.Once);
     }
 
     private static void SetUpToGetAll() =>
