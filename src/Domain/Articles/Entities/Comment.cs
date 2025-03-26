@@ -9,7 +9,8 @@ public sealed class Comment : Entity<int>
     public DateTime CreatedAt { get; }
     public Guid AuthorId { get; private set; }
     public int ArticleId { get; private set; }
-    public List<Comment> Comments { get; set; } = [];
+    public IReadOnlyCollection<Comment> Comments => _comments;
+    private readonly List<Comment> _comments = [];
 
     private Comment()
         : base(default) { }
@@ -21,7 +22,7 @@ public sealed class Comment : Entity<int>
         CreatedAt = DateTime.Now;
         AuthorId = authorId;
         ArticleId = articleId;
-        Comments = [];
+        _comments = [];
     }
 
     public static Comment Create(
@@ -45,6 +46,6 @@ public sealed class Comment : Entity<int>
             throw new NullOrEmptyException(nameof(content));
         if (!isValidAuthor)
             throw new NotValidException(nameof(authorId));
-        Comments.Add(new Comment(authorId, ArticleId, content));
+        _comments.Add(new Comment(authorId, ArticleId, content));
     }
 }

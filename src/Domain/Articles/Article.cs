@@ -10,7 +10,8 @@ public sealed class Article : Entity<int>, IAggregateRoot
     public string? Content { get; private set; }
     public DateTime CreatedAt { get; }
     public DateTime UpdatedAt { get; private set; }
-    public List<Tag> Tags { get; private set; } = [];
+    public IReadOnlyCollection<Tag> Tags => _tags;
+    private readonly List<Tag> _tags = [];
     private const int TitleMaxLength = 60;
 
     private Article()
@@ -57,6 +58,6 @@ public sealed class Article : Entity<int>, IAggregateRoot
         {
             if (Tags.Any(t => t.Name == tag))
                 return;
-            Tags.Add(Tag.Create(tag));
+            _tags.Add(Tag.Create(tag));
         });
 }

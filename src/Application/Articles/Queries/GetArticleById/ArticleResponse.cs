@@ -5,7 +5,7 @@ namespace Blog.Application.Articles.Queries.GetArticleById;
 public sealed record ArticleResponse(
     string Title,
     string Content,
-    List<Tag> Tags,
+    IEnumerable<Tag> Tags,
     DateTime CratedAt,
     DateTime UpdatedAt
 );
