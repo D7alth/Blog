@@ -7,6 +7,7 @@ using Blog.Infrastructure.Configuration.Providers;
 using Blog.Infrastructure.Domain.Articles.Repository;
 using Blog.Infrastructure.Persistence;
 using Blog.Infrastructure.UnitOfWork;
+using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -34,6 +35,7 @@ public static class ServiceRegistration
         services.AddMediatR(cfg =>
             cfg.RegisterServicesFromAssemblies(typeof(CreateArticleCommandHandler).Assembly)
         );
+        services.AddValidatorsFromAssembly(typeof(CreateArticleCommand).Assembly);
         services.Decorate(typeof(IRequestHandler<>), typeof(UnitOfWorkCommandHandlerDecorator<>));
     }
 }

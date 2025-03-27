@@ -5,6 +5,7 @@ using Blog.Application.Articles.Commands.UpdateArticle;
 using Blog.Application.Articles.Queries.GetArticleById;
 using Blog.Application.Articles.Queries.GetArticles;
 using Carter;
+using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -42,13 +43,20 @@ public class ArticleModule() : CarterModule("/api/articles")
 
         app.MapPost(
             "",
-            async (CreateRequest request, IMediator mediator) =>
+            async (
+                CreateRequest request,
+                IMediator mediator,
+                IValidator<CreateArticleCommand> validator
+            ) =>
             {
                 var command = new CreateArticleCommand(
                     request.Title,
                     request.Content,
                     request.Tags
                 );
+                var validationResult = validator.Validate(command);
+                if (!validationResult.IsValid)
+                    return Results.BadRequest(validationResult.Errors);
                 await mediator.Send(command);
                 return Results.Created();
             }
