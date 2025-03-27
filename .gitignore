@@ -2,7 +2,7 @@
 ### Remove coverage reports 
 **/coverage
 
-**/*appsettings.json
+**/appsettings*.json
 
 ### Build output 
 
