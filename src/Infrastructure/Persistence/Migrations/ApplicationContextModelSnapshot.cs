@@ -22,41 +22,7 @@ namespace Blog.Infrastructure.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Blog.Domain.Posts.Entities.Comment", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<Guid>("AuthorId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("author_id");
-
-                    b.Property<string>("Content")
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("content");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("created_at");
-
-                    b.Property<int?>("ParentCommentId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PostId")
-                        .HasColumnType("int")
-                        .HasColumnName("post_id");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ParentCommentId");
-
-                    b.ToTable("comments", (string)null);
-                });
-
-            modelBuilder.Entity("Blog.Domain.Posts.Post", b =>
+            modelBuilder.Entity("Blog.Domain.Articles.Article", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -88,18 +54,52 @@ namespace Blog.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("posts", (string)null);
+                    b.ToTable("articles", (string)null);
                 });
 
-            modelBuilder.Entity("Blog.Domain.Posts.Entities.Comment", b =>
+            modelBuilder.Entity("Blog.Domain.Articles.Entities.Comment", b =>
                 {
-                    b.HasOne("Blog.Domain.Posts.Entities.Comment", null)
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ArticleId")
+                        .HasColumnType("int")
+                        .HasColumnName("article_id");
+
+                    b.Property<Guid>("AuthorId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("author_id");
+
+                    b.Property<string>("Content")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("content");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("created_at");
+
+                    b.Property<int?>("ParentCommentId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ParentCommentId");
+
+                    b.ToTable("comments", (string)null);
+                });
+
+            modelBuilder.Entity("Blog.Domain.Articles.Entities.Comment", b =>
+                {
+                    b.HasOne("Blog.Domain.Articles.Entities.Comment", null)
                         .WithMany("Comments")
                         .HasForeignKey("ParentCommentId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
-            modelBuilder.Entity("Blog.Domain.Posts.Entities.Comment", b =>
+            modelBuilder.Entity("Blog.Domain.Articles.Entities.Comment", b =>
                 {
                     b.Navigation("Comments");
                 });

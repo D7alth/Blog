@@ -12,7 +12,7 @@ public class ApplicationContext(IDbContextOptionsProvider dbContextOptionsProvid
             dbContextOptionsProvider.Configure(optionsBuilder);
     }
 
-    public DbSet<Article> Article { get; set; }
+    public DbSet<Article> Articles { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
