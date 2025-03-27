@@ -6,7 +6,7 @@ using Bogus.DataSets;
 using Moq;
 using NUnit.Framework.Internal;
 
-namespace Blog.Tests.Application.Articles.Queries.GetAllArticles;
+namespace Blog.Tests.Application.Articles.Queries.GetArticles;
 
 [TestFixture]
 class GetAllArticlesQueryHandlerTest
@@ -43,13 +43,6 @@ class GetAllArticlesQueryHandlerTest
 
     private static void SetUpToGetArticlesAsync() =>
         _articleRepository
-            .Setup(s =>
-                s.GetArticlesAsync(
-                    It.IsAny<DateTime>(),
-                    It.IsAny<DateTime>(),
-                    It.IsAny<int>(),
-                    It.IsAny<int>()
-                )
-            )
+            .Setup(s => s.GetArticlesAsync(null, null, It.IsAny<int>(), It.IsAny<int>()))
             .ReturnsAsync(_articleList);
 }

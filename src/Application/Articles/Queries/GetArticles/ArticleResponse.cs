@@ -1,6 +1,6 @@
 using Blog.Domain.Articles.ValueObjects;
 
-namespace Blog.Application.Articles.Queries.GetAllArticles;
+namespace Blog.Application.Articles.Queries.GetArticles;
 
 public sealed record ArticleResponse(
     int Id,

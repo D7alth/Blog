@@ -1,10 +1,12 @@
+using System.Runtime.InteropServices;
 using Blog.Application.Articles.Commands.CreateArticle;
 using Blog.Application.Articles.Commands.DeleteArticle;
 using Blog.Application.Articles.Commands.UpdateArticle;
-using Blog.Application.Articles.Queries.GetAllArticles;
 using Blog.Application.Articles.Queries.GetArticleById;
+using Blog.Application.Articles.Queries.GetArticles;
 using Carter;
 using MediatR;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Blog.API.Endpoints.Articles;
 
@@ -23,9 +25,17 @@ public class ArticleModule() : CarterModule("/api/articles")
 
         app.MapGet(
             "",
-            async (IMediator mediator) =>
+            async (
+                IMediator mediator,
+                [FromQuery] DateTime? startDate,
+                [FromQuery] DateTime? endDate,
+                [FromQuery] int limit = 10,
+                [FromQuery] int page = 1
+            ) =>
             {
-                var articles = await mediator.Send(new GetAllArticlesQuery());
+                var articles = await mediator.Send(
+                    new GetArticlesQuery(startDate, endDate, limit, page)
+                );
                 return Results.Ok(articles);
             }
         );
