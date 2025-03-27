@@ -1,6 +1,6 @@
 using Blog.Domain.Articles.ValueObjects;
 
-namespace Blog.Tests.Domain.ValueObjects;
+namespace Blog.Tests.Domain.Articles.ValueObjects;
 
 [TestFixture]
 public class TagTest

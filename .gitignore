@@ -1,4 +1,8 @@
-src/API/appsettings.json
+
+### Remove coverage reports 
+**/coverage
+
+**/appsettings*.json
 
 ### Build output 
 
