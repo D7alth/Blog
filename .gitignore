@@ -1,6 +1,6 @@
 
 ### Remove coverage reports 
-**/coverage/
+**/coverage
 
 **/*appsettings.json
 
