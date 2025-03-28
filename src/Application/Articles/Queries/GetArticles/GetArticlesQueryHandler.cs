@@ -11,7 +11,6 @@ public sealed class GetArticlesQueryHandler(IArticleRepository articleRepository
         CancellationToken cancellationToken
     )
     {
-        // TODO: Add input validation with fluent validator
         var articles = await articleRepository.GetArticlesAsync(
             request.StartDate,
             request.EndDate,

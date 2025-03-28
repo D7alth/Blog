@@ -16,9 +16,13 @@ public class ArticleModule() : CarterModule("/api/articles")
     {
         app.MapGet(
             "{id:int}",
-            async (int id, IMediator mediator) =>
+            async (int id, IMediator mediator, IValidator<GetArticleByIdQuery> validator) =>
             {
-                var article = await mediator.Send(new GetArticleByIdQuery(id));
+                var query = new GetArticleByIdQuery(id);
+                var validationResult = validator.Validate(query);
+                if (!validationResult.IsValid)
+                    return Results.BadRequest(validationResult.Errors);
+                var article = await mediator.Send(query);
                 return Results.Ok(article);
             }
         );
@@ -27,15 +31,18 @@ public class ArticleModule() : CarterModule("/api/articles")
             "",
             async (
                 IMediator mediator,
+                IValidator<GetArticlesQuery> validator,
                 [FromQuery] DateTime? startDate,
                 [FromQuery] DateTime? endDate,
                 [FromQuery] int limit = 10,
                 [FromQuery] int page = 1
             ) =>
             {
-                var articles = await mediator.Send(
-                    new GetArticlesQuery(startDate, endDate, limit, page)
-                );
+                var query = new GetArticlesQuery(startDate, endDate, limit, page);
+                var validationResult = validator.Validate(query);
+                if (!validationResult.IsValid)
+                    return Results.BadRequest(validationResult.Errors);
+                var articles = await mediator.Send(query);
                 return Results.Ok(articles);
             }
         );
