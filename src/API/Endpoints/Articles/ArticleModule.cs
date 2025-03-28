@@ -1,4 +1,3 @@
-using System.Runtime.InteropServices;
 using Blog.Application.Articles.Commands.CreateArticle;
 using Blog.Application.Articles.Commands.DeleteArticle;
 using Blog.Application.Articles.Commands.UpdateArticle;
@@ -74,9 +73,12 @@ public class ArticleModule() : CarterModule("/api/articles")
 
         app.MapDelete(
             "{id:int}",
-            async (int id, IMediator mediator) =>
+            async (int id, IMediator mediator, IValidator<DeleteArticleCommand> validator) =>
             {
                 var command = new DeleteArticleCommand(id);
+                var validationResult = validator.Validate(command);
+                if (!validationResult.IsValid)
+                    return Results.BadRequest(validationResult.Errors);
                 await mediator.Send(command);
                 return Results.NoContent();
             }

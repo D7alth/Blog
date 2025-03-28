@@ -23,6 +23,8 @@ public sealed class ArticleRepository(ApplicationContext context) : IArticleRepo
         return await context.Articles.Take(limit).Skip((page - 1) * limit).ToListAsync();
     }
 
+    public Task<bool> ExistsAsync(int id) => context.Articles.AnyAsync(a => a.Id == id);
+
     public async Task<Article> GetById(int id) => await context.Articles.FindAsync(id) ?? null!;
 
     public void Update(Article article) => context.Articles.Update(article);
