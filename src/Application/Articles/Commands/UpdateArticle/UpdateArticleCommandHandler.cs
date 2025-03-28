@@ -11,9 +11,7 @@ public sealed class UpdateArticleCommandHandler(
 {
     public async Task Handle(UpdateArticleCommand request, CancellationToken cancellationToken)
     {
-        var article =
-            await articleRepository.GetById(request.Id)
-            ?? throw new KeyNotFoundException($"Article with Id {request.Id} not found");
+        var article = await articleRepository.GetById(request.Id);
         article.Update(request.Title, textProcessor.SanitizeMarkdownToHtml(request.Content));
         articleRepository.Update(article);
     }

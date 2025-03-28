@@ -63,9 +63,17 @@ public class ArticleModule() : CarterModule("/api/articles")
 
         app.MapPut(
             "{id:int}",
-            async (int id, UpdateRequest request, IMediator mediator) =>
+            async (
+                int id,
+                UpdateRequest request,
+                IMediator mediator,
+                IValidator<UpdateArticleCommand> validator
+            ) =>
             {
                 var command = new UpdateArticleCommand(id, request.Title, request.Content);
+                var validationResult = validator.Validate(command);
+                if (!validationResult.IsValid)
+                    return Results.BadRequest(validationResult.Errors);
                 await mediator.Send(command);
                 return Results.NoContent();
             }
