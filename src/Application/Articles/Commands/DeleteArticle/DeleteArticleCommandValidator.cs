@@ -7,7 +7,10 @@ public sealed class DeleteArticleCommandValidator : AbstractValidator<DeleteArti
 {
     public DeleteArticleCommandValidator(IArticleRepository articleRepository)
     {
-        RuleFor(r => r.Id).GreaterThan(0).WithMessage("Must be use a valid and positive ID");
+        RuleFor(r => r.Id)
+            .GreaterThan(0)
+            .NotNull()
+            .WithMessage("Must be use a valid and positive ID");
         RuleFor(r => r.Id)
             .MustAsync(async (id, _) => await articleRepository.ExistsAsync(id))
             .WithMessage("Article not found");
