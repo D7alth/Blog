@@ -7,6 +7,9 @@ public sealed class GetArticleByIdQueryValidator : AbstractValidator<GetArticleB
 {
     public GetArticleByIdQueryValidator()
     {
-        RuleFor(r => r.Id).GreaterThan(0).WithMessage("Must be use a valid and positive ID");
+        RuleFor(r => r.Id)
+            .GreaterThan(0)
+            .NotNull()
+            .WithMessage("Must be use a valid and positive ID");
     }
 }
