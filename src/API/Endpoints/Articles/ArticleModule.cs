@@ -1,4 +1,3 @@
-using System.Runtime.InteropServices;
 using Blog.Application.Articles.Commands.CreateArticle;
 using Blog.Application.Articles.Commands.DeleteArticle;
 using Blog.Application.Articles.Commands.UpdateArticle;
@@ -17,9 +16,13 @@ public class ArticleModule() : CarterModule("/api/articles")
     {
         app.MapGet(
             "{id:int}",
-            async (int id, IMediator mediator) =>
+            async (int id, IMediator mediator, IValidator<GetArticleByIdQuery> validator) =>
             {
-                var article = await mediator.Send(new GetArticleByIdQuery(id));
+                var query = new GetArticleByIdQuery(id);
+                var validationResult = validator.Validate(query);
+                if (!validationResult.IsValid)
+                    return Results.BadRequest(validationResult.Errors);
+                var article = await mediator.Send(query);
                 return Results.Ok(article);
             }
         );
@@ -28,15 +31,18 @@ public class ArticleModule() : CarterModule("/api/articles")
             "",
             async (
                 IMediator mediator,
+                IValidator<GetArticlesQuery> validator,
                 [FromQuery] DateTime? startDate,
                 [FromQuery] DateTime? endDate,
                 [FromQuery] int limit = 10,
                 [FromQuery] int page = 1
             ) =>
             {
-                var articles = await mediator.Send(
-                    new GetArticlesQuery(startDate, endDate, limit, page)
-                );
+                var query = new GetArticlesQuery(startDate, endDate, limit, page);
+                var validationResult = validator.Validate(query);
+                if (!validationResult.IsValid)
+                    return Results.BadRequest(validationResult.Errors);
+                var articles = await mediator.Send(query);
                 return Results.Ok(articles);
             }
         );
@@ -64,9 +70,17 @@ public class ArticleModule() : CarterModule("/api/articles")
 
         app.MapPut(
             "{id:int}",
-            async (int id, UpdateRequest request, IMediator mediator) =>
+            async (
+                int id,
+                UpdateRequest request,
+                IMediator mediator,
+                IValidator<UpdateArticleCommand> validator
+            ) =>
             {
                 var command = new UpdateArticleCommand(id, request.Title, request.Content);
+                var validationResult = validator.Validate(command);
+                if (!validationResult.IsValid)
+                    return Results.BadRequest(validationResult.Errors);
                 await mediator.Send(command);
                 return Results.NoContent();
             }
@@ -74,9 +88,12 @@ public class ArticleModule() : CarterModule("/api/articles")
 
         app.MapDelete(
             "{id:int}",
-            async (int id, IMediator mediator) =>
+            async (int id, IMediator mediator, IValidator<DeleteArticleCommand> validator) =>
             {
                 var command = new DeleteArticleCommand(id);
+                var validationResult = validator.Validate(command);
+                if (!validationResult.IsValid)
+                    return Results.BadRequest(validationResult.Errors);
                 await mediator.Send(command);
                 return Results.NoContent();
             }

@@ -30,16 +30,6 @@ class DeleteArticleCommandHandlerTest
         });
     }
 
-    [Test]
-    public void HandlerShouldThrowsKeyNotFoundWhenArticleDoesExist()
-    {
-        var command = new DeleteArticleCommand(0);
-        _articleRepository.Setup(r => r.GetById(It.IsAny<int>()))!.ReturnsAsync(null as Article);
-        Assert.ThrowsAsync<KeyNotFoundException>(
-            () => _handler.Handle(command, CancellationToken.None)
-        );
-    }
-
     private static void SetupToGetArticleById(int id) =>
         _articleRepository.Setup(r => r.GetById(It.Is<int>(i => i == id))).ReturnsAsync(_article);
 }

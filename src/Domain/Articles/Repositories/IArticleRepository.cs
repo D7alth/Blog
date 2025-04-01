@@ -9,6 +9,7 @@ public interface IArticleRepository
         int limit,
         int page
     );
+    public Task<bool> ExistsAsync(int id);
     public Task<Article> GetById(int id);
     public void Update(Article article);
     public void Remove(Article article);

@@ -8,9 +8,7 @@ public sealed class DeleteArticleCommandHandler(IArticleRepository articleReposi
 {
     public async Task Handle(DeleteArticleCommand request, CancellationToken cancellationToken)
     {
-        var article =
-            await articleRepository.GetById(request.Id)
-            ?? throw new KeyNotFoundException($"Article with Id {request.Id} not found");
+        var article = await articleRepository.GetById(request.Id);
         articleRepository.Remove(article);
     }
 }
