@@ -1,6 +1,6 @@
 using Blog.Domain.Articles.ValueObjects;
 
-namespace Blog.Application.Articles.Queries.GetArticlesByTag;
+namespace Blog.Application.Articles.Queries;
 
 public sealed record ArticleResponse(
     int Id,
