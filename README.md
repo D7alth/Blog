@@ -1,57 +1,123 @@
-# Blog - Personal Blog Project with Clean Architecture
+# Blog - Personal Blog API with Clean Architecture
 
-## 🎯 Project Overview
+## 📋 Project Overview
 
-This project is a personal blog API built with Clean Architecture principles and SOLID practices. It serves as the backend foundation for Alberth's personal blog, designed to be robust, scalable, and well-structured. While this is a real project, its architecture and implementation patterns can be used as a template for future projects.
+This project implements a RESTful API for a personal blog, developed following Clean Architecture principles and SOLID practices. The project serves as a reference implementation for .NET applications requiring a robust and well-structured architecture.
 
-### Key Features
+## Architecture and Design Patterns
 
-- Clean Architecture implementation with clear separation of concerns
-- SOLID principles and best practices
-- Effective use of design patterns
-- Comprehensive test coverage
-- Docker containerization
-- Modern development tools and practices
+### Clean Architecture
 
-## 🏗️ Architecture
+The project is structured in layers following Clean Architecture principles:
 
-The project follows Clean Architecture principles, organized in layers:
+- **Domain Layer**: Contains domain entities, business rules, and repository interfaces
+  - Implements Aggregate Root pattern for transaction management
+  - Uses Value Objects for immutable concept encapsulation
+  - Defines repository contracts through interfaces
 
-- **Domain**: Core business entities and rules
-- **Application**: Use cases and interfaces
-- **Infrastructure**: Concrete implementations of application interfaces
-- **API**: Presentation layer and controllers
-- **Tests**: Unit and integration tests
+- **Application Layer**: Implements application use cases
+  - Uses CQRS pattern with MediatR for command and query separation
+  - Implements validation through FluentValidation
+  - Defines DTOs for data transfer between layers
 
-## 🛠️ Technologies
+- **Infrastructure Layer**: Provides concrete implementations of defined interfaces
+  - Implements Repository pattern for data access
+  - Uses Entity Framework Core for ORM
+  - Implements Unit of Work pattern for transaction management
+  - Provides dependency injection configurations
+
+- **API Layer**: Presentation layer
+  - Implements RESTful endpoints
+  - Uses .NET 8 minimal APIs
+  - Defines API contracts through DTOs
+
+## Technologies and Tools
 
 - **.NET 8.0**: Main framework
+- **Entity Framework Core**: ORM for data access
+- **MediatR**: CQRS pattern implementation
+- **FluentValidation**: Command and query validation
 - **Docker**: Application containerization
-- **Git**: Version control
-- **Husky**: Git hooks for code quality
-- **VS Code**: Recommended IDE
+- **SQL Server**: Main database
+- **NUnit**: Testing framework
+- **Moq**: Mocking framework for tests
+- **Bogus**: Fake data generation for tests
 
-## 📋 Prerequisites
+## Project Structure
+
+```
+src/
+├── API/                    # Presentation layer
+│   └── Endpoints/         # RESTful endpoints
+├── Application/           # Use cases and interfaces
+│   ├── Articles/         # Article use cases
+│   │   ├── Commands/     # Commands (write)
+│   │   ├── Queries/      # Queries (read)
+│   │   └── Services/     # Application services
+│   └── Common/           # Shared components
+├── Domain/               # Entities and business rules
+│   ├── Articles/        # Article domain
+│   │   ├── Entities/    # Entities
+│   │   ├── ValueObjects/# Value objects
+│   │   └── Repositories/# Repository interfaces
+│   └── Shared/          # Shared components
+├── Infrastructure/       # Concrete implementations
+│   ├── Configuration/   # Configurations
+│   ├── Domain/         # Domain implementations
+│   ├── Persistence/    # Data access
+│   └── UnitOfWork/     # UoW implementation
+└── Tests/              # Unit and integration tests
+    ├── Application/    # Use case tests
+    └── Domain/        # Domain tests
+```
+
+## Testing
+
+The project implements comprehensive test coverage:
+
+- **Unit Tests**: Using NUnit and Moq
+- **Domain Tests**: Business rule validation
+- **Application Tests**: Use case validation
+- **Report Generation**: Using Coverlet and ReportGenerator
+
+To run tests:
+```bash
+dotnet test
+```
+
+To generate coverage report:
+```bash
+./Coverage-report.sh
+```
+
+## Running the Project
+
+### Prerequisites
 
 - .NET 8.0 SDK
-- Docker (optional, for containerization)
-- Git
+- SQL Server (or SQLite for development)
+- Docker (optional)
 
-## 🚀 Getting Started
-
-### Local Development
+### Environment Setup
 
 1. Clone the repository:
 ```bash
 git clone [REPOSITORY_URL]
 ```
 
-2. Restore dependencies:
+2. Configure connection string in `appsettings.json`
+
+3. Restore dependencies:
 ```bash
 dotnet restore
 ```
 
-3. Run the application:
+4. Run migrations:
+```bash
+dotnet ef database update --project src/Infrastructure --startup-project src/API
+```
+
+5. Run the project:
 ```bash
 dotnet run --project src/API
 ```
@@ -68,64 +134,21 @@ docker build -t blog-api .
 docker run -p 5000:80 blog-api
 ```
 
-## 🧪 Testing
+## Code Conventions
 
-The project includes unit and integration tests. To run:
+- C# naming conventions
+- SOLID principles implementation
+- API and complex method documentation
+- Validation across all layers
+- Consistent exception handling
 
-```bash
-dotnet test
-```
-
-To generate coverage report:
-```bash
-./Coverage-report.sh
-```
-
-## 📦 Project Structure
-
-```
-src/
-├── API/           # Presentation layer
-├── Application/   # Use cases and interfaces
-├── Domain/        # Business entities and rules
-├── Infrastructure/# Concrete implementations
-└── Tests/         # Unit and integration tests
-```
-
-## 🔧 Development Environment Setup
-
-1. Install recommended VS Code extensions:
-   - C#
-   - .NET Core Test Explorer
-   - Docker
-
-2. Configure Git Hooks:
-```bash
-git config core.hooksPath .husky
-```
-
-## 📝 Code Conventions
-
-- Follow C# naming conventions
-- Apply Clean Code principles
-- Keep tests up to date
-- Document APIs and complex methods
-
-## 🔄 CI/CD
+## CI/CD
 
 The project is configured for:
 - Automated builds
 - Test execution
 - Coverage report generation
 - Docker containerization
-
-## 🤝 Contributing
-
-1. Fork the project
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
 
 ## 📄 License
 
@@ -134,9 +157,3 @@ This project is licensed under the MIT License - see the `LICENSE` file for deta
 ## 👥 Author
 
 - Alberth - *Initial work*
-
-## 🙏 Acknowledgments
-
-- Clean Architecture by Robert C. Martin
-- .NET Community
-- All contributors 
