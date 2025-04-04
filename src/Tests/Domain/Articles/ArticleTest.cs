@@ -1,4 +1,5 @@
 using Blog.Domain.Articles;
+using Blog.Domain.Articles.Entities;
 using Blog.Domain.Shared.Exceptions;
 using Bogus;
 
@@ -29,20 +30,13 @@ public class ArticleTest
     [Test]
     public void ShouldCreateArticleWithTags()
     {
-        var article = Article.Create(Title, Content, _tags);
+        var tags = _tags.Select(t => Tag.Create(t, false)).ToList();
+        var article = Article.Create(Title, Content, tags);
         Assert.Multiple(() =>
         {
             Assert.That(article.Tags.First().Name, Is.EqualTo(_tags.First()));
             Assert.That(article.Tags.Last().Name, Is.EqualTo(_tags.Last()));
         });
-    }
-
-    [Test]
-    public void ShouldNotCreateArticleWithDuplicateTags()
-    {
-        var duplicateTagArr = new List<string>() { _tags[0], _tags[0], _tags[0] };
-        var article = Article.Create(Title, Content, duplicateTagArr);
-        Assert.That(article.Tags, Has.Count.EqualTo(1));
     }
 
     [Test]

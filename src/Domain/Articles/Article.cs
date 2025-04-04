@@ -1,4 +1,4 @@
-using Blog.Domain.Articles.ValueObjects;
+using Blog.Domain.Articles.Entities;
 using Blog.Domain.Shared;
 using Blog.Domain.Shared.Exceptions;
 
@@ -26,7 +26,7 @@ public sealed class Article : Entity<int>, IAggregateRoot
         UpdatedAt = updatedAt;
     }
 
-    public static Article Create(string title, string content, List<string>? tags = null)
+    public static Article Create(string title, string content, List<Tag>? tags = null)
     {
         if (string.IsNullOrEmpty(title))
             throw new NullOrEmptyException(nameof(title));
@@ -40,7 +40,7 @@ public sealed class Article : Entity<int>, IAggregateRoot
         return article;
     }
 
-    public void Update(string? title = null, string? content = null, List<string>? tags = null)
+    public void Update(string? title = null, string? content = null, List<Tag>? tags = null)
     {
         if (string.IsNullOrEmpty(title) && string.IsNullOrEmpty(content))
             throw new NullOrEmptyException(nameof(title) + "," + nameof(content));
@@ -53,11 +53,10 @@ public sealed class Article : Entity<int>, IAggregateRoot
         UpdatedAt = DateTime.Now;
     }
 
-    private void AddTags(List<string> tags) =>
+    private void AddTags(List<Tag> tags) =>
         tags.ForEach(tag =>
         {
-            if (Tags.Any(t => t.Name == tag))
-                return;
-            _tags.Add(Tag.Create(tag));
+            tag.AddArticle(this);
+            _tags.Add(tag);
         });
 }
