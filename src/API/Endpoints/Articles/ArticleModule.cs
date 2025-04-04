@@ -50,7 +50,7 @@ public class ArticleModule() : CarterModule("/api/articles")
         app.MapPost(
             "",
             async (
-                CreateRequest request,
+                CreateArticleRequest request,
                 IMediator mediator,
                 IValidator<CreateArticleCommand> validator
             ) =>
@@ -72,7 +72,7 @@ public class ArticleModule() : CarterModule("/api/articles")
             "{id:int}",
             async (
                 int id,
-                UpdateRequest request,
+                UpdateArticleRequest request,
                 IMediator mediator,
                 IValidator<UpdateArticleCommand> validator
             ) =>
