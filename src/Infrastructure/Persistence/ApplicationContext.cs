@@ -1,4 +1,5 @@
 using Blog.Domain.Articles;
+using Blog.Domain.Articles.Entities;
 using Blog.Infrastructure.Configuration;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,6 +14,7 @@ public class ApplicationContext(IDbContextOptionsProvider dbContextOptionsProvid
     }
 
     public DbSet<Article> Articles { get; set; }
+    public DbSet<Tag> Tags { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
