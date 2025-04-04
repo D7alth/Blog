@@ -20,7 +20,7 @@ public sealed class ArticleRepository(ApplicationContext context) : IArticleRepo
             context.Articles.Where(a => a.CreatedAt >= startDate);
         if (endDate.HasValue)
             context.Articles.Where(a => a.CreatedAt <= endDate);
-        return await AddPaginationToQuery(context.Articles, limit, page).ToListAsync();
+        return await context.Articles.Skip((page - 1) * limit).Take(limit).ToListAsync();
     }
 
     public Task<bool> ExistsAsync(int id) => context.Articles.AnyAsync(a => a.Id == id);
@@ -30,18 +30,4 @@ public sealed class ArticleRepository(ApplicationContext context) : IArticleRepo
     public void Update(Article article) => context.Articles.Update(article);
 
     public void Remove(Article article) => context.Remove(article);
-
-    public async Task<List<Article>> GetArticlesByTagAsync(string tag, int limit, int page) =>
-        await AddPaginationToQuery(
-                context.Articles.Where(a => a.Tags.Any(t => t.Name == tag)),
-                limit,
-                page
-            )
-            .ToListAsync();
-
-    private static IQueryable<T> AddPaginationToQuery<T>(
-        IQueryable<T> query,
-        int limit,
-        int page
-    ) => query.Skip((page - 1) * limit).Take(limit);
 }
