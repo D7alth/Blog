@@ -20,7 +20,7 @@ public sealed class ArticleRepository(ApplicationContext context) : IArticleRepo
             context.Articles.Where(a => a.CreatedAt >= startDate);
         if (endDate.HasValue)
             context.Articles.Where(a => a.CreatedAt <= endDate);
-        return await context.Articles.Take(limit).Skip((page - 1) * limit).ToListAsync();
+        return await context.Articles.Skip((page - 1) * limit).Take(limit).ToListAsync();
     }
 
     public Task<bool> ExistsAsync(int id) => context.Articles.AnyAsync(a => a.Id == id);

@@ -1,4 +1,4 @@
-using Blog.Domain.Articles.ValueObjects;
+using Blog.Domain.Articles.Entities;
 
 namespace Blog.Application.Articles.Queries.GetArticleById;
 

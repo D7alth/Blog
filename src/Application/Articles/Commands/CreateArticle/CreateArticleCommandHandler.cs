@@ -14,8 +14,7 @@ public sealed class CreateArticleCommandHandler(
     {
         var article = Article.Create(
             request.Title,
-            textProcessor.SanitizeMarkdownToHtml(request.Content),
-            request.Tags
+            textProcessor.SanitizeMarkdownToHtml(request.Content)
         );
         articleRepository.Add(article);
         return Task.CompletedTask;
