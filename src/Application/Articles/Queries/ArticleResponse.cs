@@ -6,7 +6,7 @@ public sealed record ArticleResponse(
     int Id,
     string Title,
     string Content,
-    IEnumerable<Tag> Tags,
+    Category Category,
     DateTime CratedAt,
     DateTime UpdatedAt
 );

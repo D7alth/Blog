@@ -11,19 +11,7 @@ internal sealed class ArticleEntityTypeConfiguration : IEntityTypeConfiguration<
     {
         builder.ToTable("articles");
         builder.HasKey(e => e.Id);
-        builder
-            .HasMany(a => a.Tags)
-            .WithMany(t => t.Articles)
-            .UsingEntity(
-                "ArticleTags",
-                l => l.HasOne(typeof(Tag)).WithMany().HasForeignKey("TagId"),
-                r => r.HasOne(typeof(Article)).WithMany().HasForeignKey("ArticleId"),
-                j =>
-                {
-                    j.HasKey("ArticleId", "TagId");
-                    j.ToTable("article_tags");
-                }
-            );
+        builder.HasOne(a => a.Category).WithMany(t => t.Articles).HasForeignKey(t => t.Category.Id);
         builder.Property(e => e.Title).HasColumnName("title").HasMaxLength(60);
         builder.Property(e => e.Content).HasColumnName("Content");
         builder.Property(e => e.CreatedAt).HasColumnName("created_at");

@@ -14,7 +14,7 @@ public class ApplicationContext(IDbContextOptionsProvider dbContextOptionsProvid
     }
 
     public DbSet<Article> Articles { get; set; }
-    public DbSet<Tag> Tags { get; set; }
+    public DbSet<Category> Categories { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

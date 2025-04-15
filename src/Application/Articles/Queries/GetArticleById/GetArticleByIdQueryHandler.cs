@@ -15,7 +15,7 @@ public sealed class GetArticleByIdQueryHandler(IArticleRepository articleReposit
         return new(
             article.Title!,
             article.Content!,
-            article.Tags,
+            article.Category,
             article.CreatedAt,
             article.UpdatedAt
         );

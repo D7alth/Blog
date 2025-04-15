@@ -1,23 +1,23 @@
-using Blog.Application.Tags.Commands.CreateTag;
+using Blog.Application.Categories.Commands.CreateCategory;
 using Carter;
 using FluentValidation;
 using MediatR;
 
-namespace Blog.API.Endpoints.Tags;
+namespace Blog.API.Endpoints.Categories;
 
-public class TagModule() : CarterModule("/api/tags")
+public class CategoryModule() : CarterModule("/api/categories")
 {
     public override void AddRoutes(IEndpointRouteBuilder app)
     {
         app.MapPost(
             "",
             async (
-                CreateTagRequest request,
+                CreateCategoryRequest request,
                 IMediator mediator,
-                IValidator<CreateTagCommand> validator
+                IValidator<CreateCategoryCommand> validator
             ) =>
             {
-                var command = new CreateTagCommand(request.TagName);
+                var command = new CreateCategoryCommand(request.CategoryName, request.Description);
                 var validationResult = validator.Validate(command);
                 if (!validationResult.IsValid)
                     return Results.BadRequest(validationResult.Errors);

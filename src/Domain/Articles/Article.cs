@@ -10,8 +10,7 @@ public sealed class Article : Entity<int>, IAggregateRoot
     public string? Content { get; private set; }
     public DateTime CreatedAt { get; }
     public DateTime UpdatedAt { get; private set; }
-    public IReadOnlyCollection<Tag> Tags => _tags;
-    private readonly List<Tag> _tags = [];
+    public Category Category { get; private set; } = default!;
     private const int TitleMaxLength = 60;
 
     private Article()
@@ -26,7 +25,7 @@ public sealed class Article : Entity<int>, IAggregateRoot
         UpdatedAt = updatedAt;
     }
 
-    public static Article Create(string title, string content, List<Tag>? tags = null)
+    public static Article Create(string title, string content, Category? category = null)
     {
         if (string.IsNullOrEmpty(title))
             throw new NullOrEmptyException(nameof(title));
@@ -35,12 +34,12 @@ public sealed class Article : Entity<int>, IAggregateRoot
         if (string.IsNullOrEmpty(content))
             throw new NullOrEmptyException(nameof(content));
         var article = new Article(title, content, DateTime.Now);
-        if (tags is not null && tags.Count != 0)
-            article.AddTags(tags);
+        if (category is not null)
+            article.AddCategory(category);
         return article;
     }
 
-    public void Update(string? title = null, string? content = null, List<Tag>? tags = null)
+    public void Update(string? title = null, string? content = null, Category? category = null)
     {
         if (string.IsNullOrEmpty(title) && string.IsNullOrEmpty(content))
             throw new NullOrEmptyException(nameof(title) + "," + nameof(content));
@@ -48,15 +47,14 @@ public sealed class Article : Entity<int>, IAggregateRoot
             Title = title;
         if (!string.IsNullOrEmpty(content))
             Content = content;
-        if (tags is not null && tags.Count != 0)
-            AddTags(tags);
+        if (category is not null)
+            AddCategory(category);
         UpdatedAt = DateTime.Now;
     }
 
-    private void AddTags(List<Tag> tags) =>
-        tags.ForEach(tag =>
-        {
-            tag.AddArticle(this);
-            _tags.Add(tag);
-        });
+    private void AddCategory(Category category)
+    {
+        category.AddArticle(this);
+        Category = category;
+    }
 }

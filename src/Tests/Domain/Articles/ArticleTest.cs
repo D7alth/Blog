@@ -10,7 +10,7 @@ public class ArticleTest
 {
     private const string Title = "Any Title";
     private const string Content = "Any Content";
-    private readonly List<string> _tags = ["books", "API", "Clean Code"];
+    private readonly string _categoryName = "Clean Code";
     private readonly Faker _faker = new();
 
     [SetUp]
@@ -28,14 +28,13 @@ public class ArticleTest
     }
 
     [Test]
-    public void ShouldCreateArticleWithTags()
+    public void ShouldCreateArticleWithCategory()
     {
-        var tags = _tags.Select(t => Tag.Create(t, false)).ToList();
-        var article = Article.Create(Title, Content, tags);
+        var category = Category.Create(_categoryName, false);
+        var article = Article.Create(Title, Content, category);
         Assert.Multiple(() =>
         {
-            Assert.That(article.Tags.First().Name, Is.EqualTo(_tags.First()));
-            Assert.That(article.Tags.Last().Name, Is.EqualTo(_tags.Last()));
+            Assert.That(article.Category.Name, Is.EqualTo(_categoryName));
         });
     }
 

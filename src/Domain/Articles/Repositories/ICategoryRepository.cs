@@ -2,8 +2,8 @@ using Blog.Domain.Articles.Entities;
 
 namespace Blog.Domain.Articles.Repositories;
 
-public interface ITagRepository
+public interface ICategoryRepository
 {
-    public void Add(Tag tag);
+    public void Add(Category category);
     public Task<bool> ExistsAsync(string name);
 }
