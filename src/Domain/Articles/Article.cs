@@ -4,14 +4,14 @@ using Blog.Domain.Shared.Exceptions;
 
 namespace Blog.Domain.Articles;
 
-public sealed class Article : Entity<int>, IAggregateRoot
+public class Article : Entity<int>, IAggregateRoot
 {
     public string? Title { get; private set; }
     public string? Content { get; private set; }
     public DateTime CreatedAt { get; }
     public DateTime UpdatedAt { get; private set; }
     public int CategoryId { get; private set; }
-    public Category? Category { get; private set; }
+    public virtual Category Category { get; private set; } = default!;
     private const int TitleMaxLength = 60;
 
     private Article()
