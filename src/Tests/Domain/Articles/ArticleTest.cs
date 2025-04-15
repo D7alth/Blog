@@ -11,6 +11,7 @@ public class ArticleTest
     private const string Title = "Any Title";
     private const string Content = "Any Content";
     private readonly string _categoryName = "Clean Code";
+    private readonly string _categoryDescription = "Any Description";
     private readonly Faker _faker = new();
 
     [SetUp]
@@ -30,7 +31,7 @@ public class ArticleTest
     [Test]
     public void ShouldCreateArticleWithCategory()
     {
-        var category = Category.Create(_categoryName, false);
+        var category = Category.Create(_categoryName, _categoryDescription, false);
         var article = Article.Create(Title, Content, category);
         Assert.Multiple(() =>
         {

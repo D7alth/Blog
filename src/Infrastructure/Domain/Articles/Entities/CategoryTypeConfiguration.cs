@@ -12,5 +12,10 @@ internal sealed class CategoryTypeConfiguration : IEntityTypeConfiguration<Categ
         builder.HasKey(e => e.Id);
         builder.Property(e => e.Name).HasColumnName("name").IsRequired().HasMaxLength(50);
         builder.Property(e => e.Slug).HasColumnName("slug").IsRequired().HasMaxLength(50);
+        builder
+            .Property(e => e.Description)
+            .HasColumnName("description")
+            .IsRequired()
+            .HasMaxLength(255);
     }
 }

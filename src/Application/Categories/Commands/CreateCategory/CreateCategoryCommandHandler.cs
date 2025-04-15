@@ -10,7 +10,7 @@ public sealed class CreateCategoryCommandHandler(ICategoryRepository categoryRep
     public async Task Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
     {
         var isDuplicated = await categoryRepository.ExistsAsync(request.Name);
-        var category = Category.Create(request.Name, isDuplicated);
+        var category = Category.Create(request.Name, request.Description, isDuplicated);
         categoryRepository.Add(category);
     }
 }

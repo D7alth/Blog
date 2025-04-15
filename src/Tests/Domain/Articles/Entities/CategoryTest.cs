@@ -9,13 +9,17 @@ public class CategoryTest
     private const string CategoryName = "Books";
     private const string CategoryNameWithSpaces = "Clean Code";
     private const string CategoryNameWithSpecialChars = "C# & .NET";
+    private const string CategoryDescription = "Any Description";
 
     [Test]
     [TestCase(CategoryName)]
     [TestCase(CategoryNameWithSpaces)]
     [TestCase(CategoryNameWithSpecialChars)]
     public void ShouldCreateCategory(string categoryName) =>
-        Assert.That(Category.Create(categoryName, false).Name, Is.EqualTo(categoryName));
+        Assert.That(
+            Category.Create(categoryName, CategoryDescription, false).Name,
+            Is.EqualTo(categoryName)
+        );
 
     [Test]
     [TestCase(CategoryName)]
@@ -23,18 +27,20 @@ public class CategoryTest
     [TestCase(CategoryNameWithSpecialChars)]
     public void ShouldApplySlugToName(string categoryName) =>
         Assert.That(
-            Category.Create(categoryName, false).Slug,
+            Category.Create(categoryName, CategoryDescription, false).Slug,
             Is.EqualTo(categoryName.ToLower().Replace(" ", "-"))
         );
 
     [Test]
     public void ShouldNotCreateDuplicateCategory() =>
-        Assert.Throws<ArgumentException>(() => Category.Create(CategoryName, true));
+        Assert.Throws<ArgumentException>(
+            () => Category.Create(CategoryName, CategoryDescription, true)
+        );
 
     [Test]
     public void ShouldAddArticleToCategory()
     {
-        var category = Category.Create(CategoryName, false);
+        var category = Category.Create(CategoryName, CategoryDescription, false);
         var article = Article.Create("Test Article", "Test Content");
         category.AddArticle(article);
         Assert.Multiple(() =>
