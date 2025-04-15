@@ -32,7 +32,7 @@ public static class ServiceRegistration
         services.AddScoped<IArticleRepository, ArticleRepository>();
         services.AddScoped<ITextProcessor, TextProcessor>();
         services.AddScoped<IUnitOfWork, UnitOfWork<ApplicationContext>>();
-        services.AddScoped<ITagRepository, TagRepository>();
+        services.AddScoped<ICategoryRepository, CategoryRepository>();
         services.AddMediatR(cfg =>
             cfg.RegisterServicesFromAssemblies(typeof(CreateArticleCommandHandler).Assembly)
         );

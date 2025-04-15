@@ -24,7 +24,7 @@ class GetArticleByIdQueryHandlerTest
         {
             Assert.That(article.Title, Is.EqualTo(_article.Title));
             Assert.That(article.Content, Is.EqualTo(_article.Content));
-            Assert.That(article.Tags.ToList(), Has.Count.EqualTo(_article.Tags.Count));
+            Assert.That(article.Category, Is.EqualTo(_article.Category));
         });
         _articlesRepository.Verify(r => r.GetById(It.Is<int>(i => i == articleId)), Times.Once);
     }
