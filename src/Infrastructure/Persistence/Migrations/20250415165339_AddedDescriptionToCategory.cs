@@ -16,15 +16,14 @@ namespace Blog.Infrastructure.Migrations
                 type: "nvarchar(255)",
                 maxLength: 255,
                 nullable: false,
-                defaultValue: "");
+                defaultValue: ""
+            );
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "description",
-                table: "categories");
+            migrationBuilder.DropColumn(name: "description", table: "categories");
         }
     }
 }
