@@ -10,7 +10,8 @@ public sealed class Article : Entity<int>, IAggregateRoot
     public string? Content { get; private set; }
     public DateTime CreatedAt { get; }
     public DateTime UpdatedAt { get; private set; }
-    public Category Category { get; private set; } = default!;
+    public int CategoryId { get; private set; }
+    public Category? Category { get; private set; }
     private const int TitleMaxLength = 60;
 
     private Article()
