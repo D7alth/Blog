@@ -1,6 +1,7 @@
 using Blog.Application.Articles.Commands.UpdateArticle;
 using Blog.Application.Articles.Services;
 using Blog.Domain.Articles;
+using Blog.Domain.Articles.Entities;
 using Blog.Domain.Articles.Repositories;
 using Moq;
 using NUnit.Framework.Internal;
@@ -12,7 +13,8 @@ class UpdateArticleCommandHandlerTest
 {
     private static readonly Mock<IArticleRepository> _articleRepository = new();
     private static readonly Mock<ITextProcessor> _textProcessor = new();
-    private static readonly Article _article = Article.Create("title", "content");
+    private static readonly Category _category = Category.Create("category", "description", false);
+    private static readonly Article _article = Article.Create("title", "content", _category);
     private static readonly UpdateArticleCommandHandler _handler =
         new(_articleRepository.Object, _textProcessor.Object);
 

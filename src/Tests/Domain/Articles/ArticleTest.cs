@@ -10,8 +10,7 @@ public class ArticleTest
 {
     private const string Title = "Any Title";
     private const string Content = "Any Content";
-    private readonly string _categoryName = "Clean Code";
-    private readonly string _categoryDescription = "Any Description";
+    private readonly Category _category = Category.Create("Clean Code", "Any Description", false);
     private readonly Faker _faker = new();
 
     [SetUp]
@@ -20,7 +19,7 @@ public class ArticleTest
     [Test]
     public void ShouldCreateArticle()
     {
-        var article = Article.Create(Title, Content);
+        var article = Article.Create(Title, Content, _category);
         Assert.Multiple(() =>
         {
             Assert.That(article.Title, Is.EqualTo(Title));
@@ -31,18 +30,17 @@ public class ArticleTest
     [Test]
     public void ShouldCreateArticleWithCategory()
     {
-        var category = Category.Create(_categoryName, _categoryDescription, false);
-        var article = Article.Create(Title, Content, category);
+        var article = Article.Create(Title, Content, _category);
         Assert.Multiple(() =>
         {
-            Assert.That(article.Category.Name, Is.EqualTo(_categoryName));
+            Assert.That(article.Category.Name, Is.EqualTo(_category.Name));
         });
     }
 
     [Test]
     public void ShouldUpdateArticle()
     {
-        var article = Article.Create(Title, Content);
+        var article = Article.Create(Title, Content, _category);
         var firstTimeUpdated = article.UpdatedAt;
         article.Update("new title", "new content");
         var secondTimeUpdated = article.UpdatedAt;
@@ -58,21 +56,21 @@ public class ArticleTest
     public void ShouldReturnExceptionWhenContentAndTitleIsNullToUpdate() =>
         Assert.Throws<NullOrEmptyException>(() =>
         {
-            var article = Article.Create(Title, Content);
+            var article = Article.Create(Title, Content, _category);
             article.Update();
         });
 
     [Test]
     public void ShouldNotCreateArticleWithEmptyTitle() =>
-        Assert.Throws<NullOrEmptyException>(() => Article.Create("", Content));
+        Assert.Throws<NullOrEmptyException>(() => Article.Create("", Content, _category));
 
     [Test]
     public void ShouldNotCreateArticleWithTitleTooBig() =>
         Assert.Throws<ArgumentException>(
-            () => Article.Create(_faker.Rant.Random.AlphaNumeric(90), Content)
+            () => Article.Create(_faker.Rant.Random.AlphaNumeric(90), Content, _category)
         );
 
     [Test]
     public void ShouldNotCreateArticleWithEmptyContent() =>
-        Assert.Throws<NullOrEmptyException>(() => Article.Create(Title, ""));
+        Assert.Throws<NullOrEmptyException>(() => Article.Create(Title, "", _category));
 }

@@ -1,8 +1,8 @@
 using Blog.Application.Articles.Queries.GetArticleById;
 using Blog.Domain.Articles;
+using Blog.Domain.Articles.Entities;
 using Blog.Domain.Articles.Repositories;
 using Moq;
-using NUnit.Framework.Internal;
 
 namespace Blog.Tests.Application.Articles.Queries.GetArticleById;
 
@@ -10,7 +10,8 @@ namespace Blog.Tests.Application.Articles.Queries.GetArticleById;
 class GetArticleByIdQueryHandlerTest
 {
     private static readonly Mock<IArticleRepository> _articlesRepository = new();
-    private static readonly Article _article = Article.Create("title", "content");
+    private static readonly Category _category = Category.Create("category", "description", false);
+    private static readonly Article _article = Article.Create("title", "content", _category);
     private static readonly GetArticleByIdQueryHandler _handler = new(_articlesRepository.Object);
 
     [Test]
