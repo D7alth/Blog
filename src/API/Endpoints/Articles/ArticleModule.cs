@@ -58,7 +58,7 @@ public class ArticleModule() : CarterModule("/api/articles")
                 var command = new CreateArticleCommand(
                     request.Title,
                     request.Content,
-                    request.CategoryName
+                    request.CategoryId
                 );
                 var validationResult = validator.Validate(command);
                 if (!validationResult.IsValid)

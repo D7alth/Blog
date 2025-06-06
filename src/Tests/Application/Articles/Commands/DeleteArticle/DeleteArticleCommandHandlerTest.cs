@@ -1,8 +1,8 @@
 using Blog.Application.Articles.Commands.DeleteArticle;
 using Blog.Domain.Articles;
+using Blog.Domain.Articles.Entities;
 using Blog.Domain.Articles.Repositories;
 using Moq;
-using NUnit.Framework.Internal;
 
 namespace Blog.Tests.Application.Articles.Commands.DeleteArticle;
 
@@ -11,7 +11,8 @@ class DeleteArticleCommandHandlerTest
 {
     private static readonly Mock<IArticleRepository> _articleRepository = new();
     private static readonly DeleteArticleCommandHandler _handler = new(_articleRepository.Object);
-    private static readonly Article _article = Article.Create("title", "content");
+    private static readonly Category _category = Category.Create("category", "description", false);
+    private static readonly Article _article = Article.Create("title", "content", _category);
 
     [Test]
     public async Task HandlerShouldDeleteArticle()
