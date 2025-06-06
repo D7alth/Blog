@@ -6,6 +6,9 @@ public sealed class GetCategoryByIdQueryValidator : AbstractValidator<GetCategor
 {
     public GetCategoryByIdQueryValidator()
     {
-        RuleFor(r => r.CategoryId).GreaterThan(0).NotNull().WithMessage("Must be value should greeter than 1");
+        RuleFor(r => r.CategoryId)
+            .GreaterThan(0)
+            .NotNull()
+            .WithMessage("Must be value should greeter than 1");
     }
 }
