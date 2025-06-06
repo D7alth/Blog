@@ -13,7 +13,9 @@ public sealed class CreateArticleCommandHandler(
 {
     public async Task Handle(CreateArticleCommand request, CancellationToken cancellationToken)
     {
-        var category = await categoryRepository.GetCategoryById(request.CategoryId) ?? throw new KeyNotFoundException();
+        var category =
+            await categoryRepository.GetCategoryById(request.CategoryId)
+            ?? throw new KeyNotFoundException();
         var article = Article.Create(
             request.Title,
             textProcessor.SanitizeMarkdownToHtml(request.Content),

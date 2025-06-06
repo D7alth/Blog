@@ -19,7 +19,6 @@ public class ArticleTest
     [Test]
     public void ShouldCreateArticle()
     {
-       
         var article = Article.Create(Title, Content, _category);
         Assert.Multiple(() =>
         {

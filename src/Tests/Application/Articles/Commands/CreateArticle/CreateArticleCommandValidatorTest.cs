@@ -1,6 +1,5 @@
 using Blog.Application.Articles.Commands.CreateArticle;
 using FluentValidation.TestHelper;
-using NUnit.Framework.Internal;
 
 namespace Blog.Tests.Application.Articles.Commands.CreateArticle;
 
@@ -34,7 +33,7 @@ class CreateArticleCommandValidatorTest
         var result = _validator.TestValidate(invalidCommand);
         result.ShouldHaveValidationErrorFor(article => article.Content);
     }
-    
+
     [Test]
     public void ShouldHaveErrorWhenCategoryIdIsLessToOne()
     {

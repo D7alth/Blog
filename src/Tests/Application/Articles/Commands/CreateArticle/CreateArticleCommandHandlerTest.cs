@@ -4,7 +4,6 @@ using Blog.Domain.Articles;
 using Blog.Domain.Articles.Entities;
 using Blog.Domain.Articles.Repositories;
 using Moq;
-using NUnit.Framework.Internal;
 
 namespace Blog.Tests.Application.Articles.Commands.CreateArticle;
 
@@ -17,7 +16,6 @@ class CreateCommandHandlerTest
     private static readonly Category _category = Category.Create("category", "description", false);
     private static readonly CreateArticleCommandHandler _handler =
         new(_articleRepository.Object, _categoryRepository.Object, _textProcessor.Object);
-    
 
     [Test]
     public void HandlerShouldCreateNewArticle()
@@ -48,5 +46,7 @@ class CreateCommandHandlerTest
             .Returns(content);
 
     private static void SetUpToGetCategoryById(int id) =>
-        _categoryRepository.Setup(s => s.GetCategoryById(It.Is<int>(i => i == id))).ReturnsAsync(_category);
+        _categoryRepository
+            .Setup(s => s.GetCategoryById(It.Is<int>(i => i == id)))
+            .ReturnsAsync(_category);
 }
