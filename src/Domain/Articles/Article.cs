@@ -11,7 +11,7 @@ public class Article : Entity<int>, IAggregateRoot
     public DateTime CreatedAt { get; }
     public DateTime UpdatedAt { get; private set; }
     public int CategoryId { get; private set; }
-    public virtual Category Category { get; private set; } = default!;
+    public virtual Category Category { get; private set; }
     private const int TitleMaxLength = 60;
 
     private Article()
@@ -26,7 +26,7 @@ public class Article : Entity<int>, IAggregateRoot
         UpdatedAt = updatedAt;
     }
 
-    public static Article Create(string title, string content, Category? category = null)
+    public static Article Create(string title, string content, Category category)
     {
         if (string.IsNullOrEmpty(title))
             throw new NullOrEmptyException(nameof(title));
@@ -35,8 +35,7 @@ public class Article : Entity<int>, IAggregateRoot
         if (string.IsNullOrEmpty(content))
             throw new NullOrEmptyException(nameof(content));
         var article = new Article(title, content, DateTime.Now);
-        if (category is not null)
-            article.AddCategory(category);
+        article.AddCategory(category);
         return article;
     }
 

@@ -4,7 +4,7 @@ using FluentValidation.TestHelper;
 namespace Blog.Tests.Application.Categories.Commands.CreateCategory;
 
 [TestFixture]
-public class CreateCategoryCommandValidatorTests
+public class GetCategoryByIdQueryValidatorTests
 {
     private readonly CreateCategoryCommandValidator _validator = new();
 

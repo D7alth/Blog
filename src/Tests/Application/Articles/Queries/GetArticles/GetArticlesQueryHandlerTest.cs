@@ -1,5 +1,6 @@
 using Blog.Application.Articles.Queries.GetArticles;
 using Blog.Domain.Articles;
+using Blog.Domain.Articles.Entities;
 using Blog.Domain.Articles.Repositories;
 using Bogus;
 using Moq;
@@ -11,10 +12,11 @@ namespace Blog.Tests.Application.Articles.Queries.GetArticles;
 class GetAllArticlesQueryHandlerTest
 {
     private static readonly Mock<IArticleRepository> _articleRepository = new();
+    private static readonly Category _category = Category.Create("category", "description", false);
     private static readonly List<Article> _articleList =
     [
-        Article.Create("title", "content"),
-        Article.Create("title 2", "content 2")
+        Article.Create("title", "content", _category),
+        Article.Create("title 2", "content 2", _category)
     ];
     private static readonly GetArticlesQueryHandler _handler = new(_articleRepository.Object);
 

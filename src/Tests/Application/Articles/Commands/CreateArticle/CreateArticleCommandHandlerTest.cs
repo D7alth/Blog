@@ -1,6 +1,7 @@
 using Blog.Application.Articles.Commands.CreateArticle;
 using Blog.Application.Articles.Services;
 using Blog.Domain.Articles;
+using Blog.Domain.Articles.Entities;
 using Blog.Domain.Articles.Repositories;
 using Moq;
 using NUnit.Framework.Internal;
@@ -12,16 +13,21 @@ class CreateCommandHandlerTest
 {
     private static readonly Mock<IArticleRepository> _articleRepository = new();
     private static readonly Mock<ITextProcessor> _textProcessor = new();
+    private static readonly Mock<ICategoryRepository> _categoryRepository = new();
+    private static readonly Category _category = Category.Create("category", "description", false);
     private static readonly CreateArticleCommandHandler _handler =
-        new(_articleRepository.Object, _textProcessor.Object);
+        new(_articleRepository.Object, _categoryRepository.Object, _textProcessor.Object);
+    
 
     [Test]
     public void HandlerShouldCreateNewArticle()
     {
         var title = "title";
         var content = "content";
+        var categoryId = 1;
         SetUpToGetProcessedText(content);
-        var command = new CreateArticleCommand(title, content);
+        SetUpToGetCategoryById(categoryId);
+        var command = new CreateArticleCommand(title, content, categoryId);
         _handler.Handle(command, CancellationToken.None);
         Assert.Multiple(() =>
         {
@@ -40,4 +46,7 @@ class CreateCommandHandlerTest
         _textProcessor
             .Setup(s => s.SanitizeMarkdownToHtml(It.Is<string>(s => s == content)))
             .Returns(content);
+
+    private static void SetUpToGetCategoryById(int id) =>
+        _categoryRepository.Setup(s => s.GetCategoryById(It.Is<int>(i => i == id))).ReturnsAsync(_category);
 }

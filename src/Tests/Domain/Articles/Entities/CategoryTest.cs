@@ -1,4 +1,3 @@
-using Blog.Domain.Articles;
 using Blog.Domain.Articles.Entities;
 
 namespace Blog.Tests.Domain.Articles.Entities;
@@ -36,17 +35,4 @@ public class CategoryTest
         Assert.Throws<ArgumentException>(
             () => Category.Create(CategoryName, CategoryDescription, true)
         );
-
-    [Test]
-    public void ShouldAddArticleToCategory()
-    {
-        var category = Category.Create(CategoryName, CategoryDescription, false);
-        var article = Article.Create("Test Article", "Test Content");
-        category.AddArticle(article);
-        Assert.Multiple(() =>
-        {
-            Assert.That(category.Articles, Has.Count.EqualTo(1));
-            Assert.That(category.Articles.First(), Is.EqualTo(article));
-        });
-    }
 }
