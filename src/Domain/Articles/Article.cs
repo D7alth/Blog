@@ -54,6 +54,6 @@ public class Article : Entity<int>, IAggregateRoot
     private void AddCategory(Category category)
     {
         category.AddArticle(this);
-        CategoryId = category.Id;       
+        CategoryId = category.Id;
     }
 }
