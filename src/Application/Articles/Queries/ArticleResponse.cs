@@ -1,12 +1,10 @@
-using Blog.Domain.Articles.Entities;
-
 namespace Blog.Application.Articles.Queries;
 
 public sealed record ArticleResponse(
     int Id,
     string Title,
     string Content,
-    Category Category,
+    int CategoryId,
     DateTime CratedAt,
     DateTime UpdatedAt
 );

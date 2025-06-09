@@ -11,7 +11,6 @@ public class Article : Entity<int>, IAggregateRoot
     public DateTime CreatedAt { get; }
     public DateTime UpdatedAt { get; private set; }
     public int CategoryId { get; private set; }
-    public virtual Category Category { get; private set; }
     private const int TitleMaxLength = 60;
 
     private Article()
@@ -55,6 +54,6 @@ public class Article : Entity<int>, IAggregateRoot
     private void AddCategory(Category category)
     {
         category.AddArticle(this);
-        Category = category;
+        CategoryId = category.Id;       
     }
 }

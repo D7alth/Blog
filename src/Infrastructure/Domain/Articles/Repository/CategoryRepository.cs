@@ -9,7 +9,9 @@ public sealed class CategoryRepository(ApplicationContext context) : ICategoryRe
 {
     public void Add(Category category) => context.Categories.Add(category);
 
-    public async Task<Category?> GetCategoryById(int id) => await context.Categories.FindAsync(id);
+    public async Task<Category?> GetCategoryById(int id) => await context.Categories
+        .Include(c => c.Articles).Where(c => c.Id == id)
+        .FirstOrDefaultAsync();
 
     public Task<bool> ExistsAsync(string name) => context.Categories.AnyAsync(t => t.Name == name);
 }

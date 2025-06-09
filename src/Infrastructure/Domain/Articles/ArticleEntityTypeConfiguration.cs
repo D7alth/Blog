@@ -10,7 +10,7 @@ internal sealed class ArticleEntityTypeConfiguration : IEntityTypeConfiguration<
     {
         builder.ToTable("articles");
         builder.HasKey(e => e.Id);
-        builder.HasOne(a => a.Category).WithMany(t => t.Articles).HasForeignKey(t => t.CategoryId);
+        builder.Property(e => e.CategoryId).HasColumnName("CategoryId");
         builder.Property(e => e.Title).HasColumnName("title").HasMaxLength(60);
         builder.Property(e => e.Content).HasColumnName("Content");
         builder.Property(e => e.CreatedAt).HasColumnName("created_at");
