@@ -13,9 +13,7 @@ public class CategoryModule() : CarterModule("/api/categories")
     {
         app.MapGet(
             "",
-            async (
-                IMediator mediator
-            ) =>
+            async (IMediator mediator) =>
             {
                 var query = new GetCategoriesQuery();
                 var result = await mediator.Send(query);

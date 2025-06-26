@@ -15,8 +15,8 @@ public sealed class CategoryRepository(ApplicationContext context) : ICategoryRe
             .Where(c => c.Id == id)
             .FirstOrDefaultAsync();
 
-    public async Task<List<Category>> GetCategoriesAsync()
-    => await context.Categories.ToListAsync();
-    
+    public async Task<List<Category>> GetCategoriesAsync() =>
+        await context.Categories.ToListAsync();
+
     public Task<bool> ExistsAsync(string name) => context.Categories.AnyAsync(t => t.Name == name);
 }
