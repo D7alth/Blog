@@ -1,5 +1,5 @@
-using Blog.PostContext.Domain.Articles.Repositories;
 using Blog.PostContext.Application.Articles.Services;
+using Blog.PostContext.Domain.Articles.Repositories;
 using MediatR;
 
 namespace Blog.PostContext.Application.Articles.Commands.UpdateArticle;

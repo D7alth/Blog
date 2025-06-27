@@ -1,12 +1,12 @@
-using Blog.PostContext.Application.Articles.Commands.CreateArticle;
-using Blog.PostContext.Application.Articles.Services;
-using Blog.PostContext.Domain.Articles.Repositories;
 using Blog.Infrastructure.Application.Articles;
 using Blog.Infrastructure.Configuration;
 using Blog.Infrastructure.Configuration.Providers;
 using Blog.Infrastructure.Domain.Articles.Repository;
 using Blog.Infrastructure.Persistence;
 using Blog.Infrastructure.UnitOfWork;
+using Blog.PostContext.Application.Articles.Commands.CreateArticle;
+using Blog.PostContext.Application.Articles.Services;
+using Blog.PostContext.Domain.Articles.Repositories;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.Configuration;

@@ -1,6 +1,6 @@
+using Blog.Infrastructure.Persistence;
 using Blog.PostContext.Domain.Articles;
 using Blog.PostContext.Domain.Articles.Repositories;
-using Blog.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
 namespace Blog.Infrastructure.Domain.Articles.Repository;

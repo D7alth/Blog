@@ -1,4 +1,5 @@
 using Blog.PostContext.Application.Categories.Commands.CreateCategory;
+using Blog.PostContext.Application.Categories.Queries.GetCategories;
 using Blog.PostContext.Application.Categories.Queries.GetCategoryById;
 using Carter;
 using FluentValidation;
@@ -10,6 +11,15 @@ public class CategoryModule() : CarterModule("/api/categories")
 {
     public override void AddRoutes(IEndpointRouteBuilder app)
     {
+        app.MapGet(
+            "",
+            async (IMediator mediator) =>
+            {
+                var query = new GetCategoriesQuery();
+                var result = await mediator.Send(query);
+                return Results.Ok(result);
+            }
+        );
         app.MapGet(
             "{categoryId:int}",
             async (
