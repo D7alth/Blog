@@ -1,18 +1,18 @@
 using Blog.PostContext.Application.Articles.Commands.CreateArticle;
 using Blog.PostContext.Application.Articles.Services;
 using Blog.PostContext.Domain.Articles.Repositories;
-using Blog.Infrastructure.Application.Articles;
-using Blog.Infrastructure.Configuration;
-using Blog.Infrastructure.Configuration.Providers;
-using Blog.Infrastructure.Domain.Articles.Repository;
-using Blog.Infrastructure.Persistence;
-using Blog.Infrastructure.UnitOfWork;
+using Blog.PostContext.Infrastructure.Application.Articles;
+using Blog.PostContext.Infrastructure.Configuration;
+using Blog.PostContext.Infrastructure.Configuration.Providers;
+using Blog.PostContext.Infrastructure.Domain.Articles.Repository;
+using Blog.PostContext.Infrastructure.Persistence;
+using Blog.PostContext.Infrastructure.UnitOfWork;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Blog.Infrastructure;
+namespace Blog.PostContext.Infrastructure;
 
 public static class ServiceRegistration
 {

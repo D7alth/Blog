@@ -1,9 +1,9 @@
 using Blog.PostContext.Domain.Articles;
 using Blog.PostContext.Domain.Articles.Repositories;
-using Blog.Infrastructure.Persistence;
+using Blog.PostContext.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
-namespace Blog.Infrastructure.Domain.Articles.Repository;
+namespace Blog.PostContext.Infrastructure.Domain.Articles.Repository;
 
 public sealed class ArticleRepository(ApplicationContext context) : IArticleRepository
 {

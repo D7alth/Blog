@@ -2,7 +2,7 @@ using Blog.PostContext.Domain.Articles.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Blog.Infrastructure.Domain.Articles.Entities;
+namespace Blog.PostContext.Infrastructure.Domain.Articles.Entities;
 
 internal sealed class CommentTypeConfiguration : IEntityTypeConfiguration<Comment>
 {

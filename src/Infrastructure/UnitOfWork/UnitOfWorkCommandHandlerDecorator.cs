@@ -1,6 +1,6 @@
 using MediatR;
 
-namespace Blog.Infrastructure.UnitOfWork;
+namespace Blog.PostContext.Infrastructure.UnitOfWork;
 
 public class UnitOfWorkCommandHandlerDecorator<T>(
     IRequestHandler<T> decorated,

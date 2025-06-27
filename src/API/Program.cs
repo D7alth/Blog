@@ -1,4 +1,4 @@
-using Blog.Infrastructure;
+using Blog.PostContext.Infrastructure;
 using Carter;
 
 var builder = WebApplication.CreateBuilder(args);

@@ -1,6 +1,6 @@
+using Blog.PostContext.Application.Articles.Services;
 using Blog.PostContext.Domain.Articles;
 using Blog.PostContext.Domain.Articles.Repositories;
-using Blog.PostContext.Application.Articles.Services;
 using MediatR;
 
 namespace Blog.PostContext.Application.Articles.Commands.CreateArticle;

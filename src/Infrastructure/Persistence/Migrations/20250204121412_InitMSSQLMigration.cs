@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Blog.Infrastructure.Migrations
+namespace Blog.PostContext.Infrastructure.Migrations
 {
     /// <inheritdoc />
     public partial class InitMSSQLMigration : Migration
