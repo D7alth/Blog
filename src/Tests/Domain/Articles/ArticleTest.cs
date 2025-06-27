@@ -33,7 +33,7 @@ public class ArticleTest
         var article = Article.Create(Title, Content, _category);
         Assert.Multiple(() =>
         {
-            Assert.That(article.Category.Name, Is.EqualTo(_category.Name));
+            Assert.That(article.CategoryId, Is.EqualTo(_category.Id));
         });
     }
 

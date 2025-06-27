@@ -21,7 +21,7 @@ public sealed class GetArticlesQueryHandler(IArticleRepository articleRepository
             article.Id,
             article.Title!,
             article.Content!,
-            article.Category!,
+            article.CategoryId,
             article.CreatedAt,
             article.UpdatedAt
         ));
