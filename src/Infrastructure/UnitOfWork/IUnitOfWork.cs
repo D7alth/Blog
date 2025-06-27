@@ -1,4 +1,4 @@
-namespace Blog.Infrastructure.UnitOfWork;
+namespace Blog.PostContext.Infrastructure.UnitOfWork;
 
 public interface IUnitOfWork
 {

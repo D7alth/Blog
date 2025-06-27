@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace Blog.Infrastructure.Configuration;
+namespace Blog.PostContext.Infrastructure.Configuration;
 
 public interface IDbContextOptionsProvider
 {

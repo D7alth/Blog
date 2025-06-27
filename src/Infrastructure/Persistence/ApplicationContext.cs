@@ -1,9 +1,9 @@
-using Blog.Infrastructure.Configuration;
 using Blog.PostContext.Domain.Articles;
 using Blog.PostContext.Domain.Articles.Entities;
+using Blog.PostContext.Infrastructure.Configuration;
 using Microsoft.EntityFrameworkCore;
 
-namespace Blog.Infrastructure.Persistence;
+namespace Blog.PostContext.Infrastructure.Persistence;
 
 public class ApplicationContext(IDbContextOptionsProvider dbContextOptionsProvider) : DbContext
 {

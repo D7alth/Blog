@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace Blog.Infrastructure.Migrations
+namespace Blog.PostContext.Infrastructure.Migrations
 {
     /// <inheritdoc />
     public partial class IntroducedContentToPostTable : Migration

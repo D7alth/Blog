@@ -1,9 +1,9 @@
-using Blog.Infrastructure.Persistence;
 using Blog.PostContext.Domain.Articles.Entities;
 using Blog.PostContext.Domain.Articles.Repositories;
+using Blog.PostContext.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
-namespace Blog.Infrastructure.Domain.Articles.Repository;
+namespace Blog.PostContext.Infrastructure.Domain.Articles.Repository;
 
 public sealed class CategoryRepository(ApplicationContext context) : ICategoryRepository
 {

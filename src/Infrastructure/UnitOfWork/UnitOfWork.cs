@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace Blog.Infrastructure.UnitOfWork;
+namespace Blog.PostContext.Infrastructure.UnitOfWork;
 
 public sealed class UnitOfWork<TDbContext>(TDbContext dbContext) : IUnitOfWork
     where TDbContext : DbContext
