@@ -7,6 +7,7 @@
 
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
+    <RootNamespace>Blog.Tests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -29,8 +30,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Domain\Blog.Domain.csproj" />
-    <ProjectReference Include="..\Application\Blog.Application.csproj" />
+    <ProjectReference Include="..\Domain\Blog.PostContext.Domain.csproj" />
+    <ProjectReference Include="..\Application\Blog.PostContext.Application.csproj" />
   </ItemGroup>
 
   <ItemGroup>

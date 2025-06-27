@@ -1,6 +1,6 @@
-using Blog.Domain.Articles.Entities;
+using Blog.PostContext.Domain.Articles.Entities;
 
-namespace Blog.Domain.Articles.Repositories;
+namespace Blog.PostContext.Domain.Articles.Repositories;
 
 public interface ICategoryRepository
 {

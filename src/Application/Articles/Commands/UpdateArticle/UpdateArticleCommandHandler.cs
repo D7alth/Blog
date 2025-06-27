@@ -1,8 +1,8 @@
-using Blog.Application.Articles.Services;
-using Blog.Domain.Articles.Repositories;
+using Blog.PostContext.Domain.Articles.Repositories;
+using Blog.PostContext.Application.Articles.Services;
 using MediatR;
 
-namespace Blog.Application.Articles.Commands.UpdateArticle;
+namespace Blog.PostContext.Application.Articles.Commands.UpdateArticle;
 
 public sealed class UpdateArticleCommandHandler(
     IArticleRepository articleRepository,

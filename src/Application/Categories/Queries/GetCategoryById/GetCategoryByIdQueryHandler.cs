@@ -1,8 +1,8 @@
-using Blog.Domain.Articles.Entities;
-using Blog.Domain.Articles.Repositories;
+using Blog.PostContext.Domain.Articles.Entities;
+using Blog.PostContext.Domain.Articles.Repositories;
 using MediatR;
 
-namespace Blog.Application.Categories.Queries.GetCategoryById;
+namespace Blog.PostContext.Application.Categories.Queries.GetCategoryById;
 
 public sealed class GetCategoryByIdQueryHandler(ICategoryRepository categoryRepository)
     : IRequestHandler<GetCategoryByIdQuery, Category>

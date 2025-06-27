@@ -1,6 +1,6 @@
 using FluentValidation;
 
-namespace Blog.Application.Articles.Commands.CreateArticle;
+namespace Blog.PostContext.Application.Articles.Commands.CreateArticle;
 
 public sealed class CreateArticleCommandValidator : AbstractValidator<CreateArticleCommand>
 {

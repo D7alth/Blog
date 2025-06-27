@@ -1,3 +1,3 @@
-namespace Blog.Domain.Shared;
+namespace Blog.PostContext.Domain.Shared;
 
 internal interface IAggregateRoot { }

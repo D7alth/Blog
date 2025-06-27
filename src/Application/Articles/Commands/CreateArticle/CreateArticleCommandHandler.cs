@@ -1,9 +1,9 @@
-using Blog.Application.Articles.Services;
-using Blog.Domain.Articles;
-using Blog.Domain.Articles.Repositories;
+using Blog.PostContext.Domain.Articles;
+using Blog.PostContext.Domain.Articles.Repositories;
+using Blog.PostContext.Application.Articles.Services;
 using MediatR;
 
-namespace Blog.Application.Articles.Commands.CreateArticle;
+namespace Blog.PostContext.Application.Articles.Commands.CreateArticle;
 
 public sealed class CreateArticleCommandHandler(
     IArticleRepository articleRepository,

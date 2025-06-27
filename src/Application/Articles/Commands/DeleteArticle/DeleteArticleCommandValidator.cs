@@ -1,7 +1,7 @@
-using Blog.Domain.Articles.Repositories;
+using Blog.PostContext.Domain.Articles.Repositories;
 using FluentValidation;
 
-namespace Blog.Application.Articles.Commands.DeleteArticle;
+namespace Blog.PostContext.Application.Articles.Commands.DeleteArticle;
 
 public sealed class DeleteArticleCommandValidator : AbstractValidator<DeleteArticleCommand>
 {

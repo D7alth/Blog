@@ -1,4 +1,4 @@
-namespace Blog.Domain.Shared.Exceptions;
+namespace Blog.PostContext.Domain.Shared.Exceptions;
 
 public sealed class NotValidException : FormatException
 {

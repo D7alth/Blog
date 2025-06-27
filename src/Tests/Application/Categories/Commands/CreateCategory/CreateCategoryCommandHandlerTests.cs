@@ -1,6 +1,6 @@
-using Blog.Application.Categories.Commands.CreateCategory;
-using Blog.Domain.Articles.Entities;
-using Blog.Domain.Articles.Repositories;
+using Blog.PostContext.Application.Categories.Commands.CreateCategory;
+using Blog.PostContext.Domain.Articles.Entities;
+using Blog.PostContext.Domain.Articles.Repositories;
 using Moq;
 
 namespace Blog.Tests.Application.Categories.Commands.CreateCategory;

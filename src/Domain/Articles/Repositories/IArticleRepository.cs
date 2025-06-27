@@ -1,4 +1,4 @@
-namespace Blog.Domain.Articles.Repositories;
+namespace Blog.PostContext.Domain.Articles.Repositories;
 
 public interface IArticleRepository
 {

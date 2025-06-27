@@ -1,7 +1,7 @@
-using Blog.Application.Articles.Queries.GetArticles;
-using Blog.Domain.Articles;
-using Blog.Domain.Articles.Entities;
-using Blog.Domain.Articles.Repositories;
+using Blog.PostContext.Application.Articles.Queries.GetArticles;
+using Blog.PostContext.Domain.Articles;
+using Blog.PostContext.Domain.Articles.Entities;
+using Blog.PostContext.Domain.Articles.Repositories;
 using Bogus;
 using Moq;
 using NUnit.Framework.Internal;

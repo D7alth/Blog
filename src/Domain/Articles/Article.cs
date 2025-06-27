@@ -1,8 +1,8 @@
-using Blog.Domain.Articles.Entities;
-using Blog.Domain.Shared;
-using Blog.Domain.Shared.Exceptions;
+using Blog.PostContext.Domain.Articles.Entities;
+using Blog.PostContext.Domain.Shared;
+using Blog.PostContext.Domain.Shared.Exceptions;
 
-namespace Blog.Domain.Articles;
+namespace Blog.PostContext.Domain.Articles;
 
 public class Article : Entity<int>, IAggregateRoot
 {

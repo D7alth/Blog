@@ -1,6 +1,6 @@
 using FluentValidation;
 
-namespace Blog.Application.Categories.Queries.GetCategoryById;
+namespace Blog.PostContext.Application.Categories.Queries.GetCategoryById;
 
 public sealed class GetCategoryByIdQueryValidator : AbstractValidator<GetCategoryByIdQuery>
 {

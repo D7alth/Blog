@@ -1,8 +1,8 @@
-using Blog.Domain.Articles.Entities;
-using Blog.Domain.Articles.Repositories;
+using Blog.PostContext.Domain.Articles.Entities;
+using Blog.PostContext.Domain.Articles.Repositories;
 using MediatR;
 
-namespace Blog.Application.Categories.Commands.CreateCategory;
+namespace Blog.PostContext.Application.Categories.Commands.CreateCategory;
 
 public sealed class CreateCategoryCommandHandler(ICategoryRepository categoryRepository)
     : IRequestHandler<CreateCategoryCommand>

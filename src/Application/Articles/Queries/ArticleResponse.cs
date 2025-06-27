@@ -1,6 +1,6 @@
-using Blog.Domain.Articles.Entities;
+using Blog.PostContext.Domain.Articles.Entities;
 
-namespace Blog.Application.Articles.Queries;
+namespace Blog.PostContext.Application.Articles.Queries;
 
 public sealed record ArticleResponse(
     int Id,

@@ -1,4 +1,4 @@
-using Blog.Application.Articles.Services;
+using Blog.PostContext.Application.Articles.Services;
 using Markdig;
 
 namespace Blog.Infrastructure.Application.Articles;

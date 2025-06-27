@@ -1,5 +1,5 @@
-using Blog.Application.Categories.Commands.CreateCategory;
-using Blog.Application.Categories.Queries.GetCategoryById;
+using Blog.PostContext.Application.Categories.Commands.CreateCategory;
+using Blog.PostContext.Application.Categories.Queries.GetCategoryById;
 using Carter;
 using FluentValidation;
 using MediatR;

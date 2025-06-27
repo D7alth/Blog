@@ -1,7 +1,7 @@
-using Blog.Domain.Shared;
-using Blog.Domain.Shared.Exceptions;
+using Blog.PostContext.Domain.Shared;
+using Blog.PostContext.Domain.Shared.Exceptions;
 
-namespace Blog.Domain.Articles.Entities;
+namespace Blog.PostContext.Domain.Articles.Entities;
 
 public sealed class Comment : Entity<int>
 {

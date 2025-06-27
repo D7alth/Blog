@@ -1,4 +1,4 @@
-using Blog.Application.Categories.Commands.CreateCategory;
+using Blog.PostContext.Application.Categories.Commands.CreateCategory;
 using FluentValidation.TestHelper;
 
 namespace Blog.Tests.Application.Categories.Commands.CreateCategory;

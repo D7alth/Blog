@@ -1,7 +1,7 @@
-using Blog.Application.Articles.Commands.DeleteArticle;
-using Blog.Domain.Articles;
-using Blog.Domain.Articles.Entities;
-using Blog.Domain.Articles.Repositories;
+using Blog.PostContext.Application.Articles.Commands.DeleteArticle;
+using Blog.PostContext.Domain.Articles;
+using Blog.PostContext.Domain.Articles.Entities;
+using Blog.PostContext.Domain.Articles.Repositories;
 using Moq;
 
 namespace Blog.Tests.Application.Articles.Commands.DeleteArticle;

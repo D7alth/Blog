@@ -1,6 +1,6 @@
-using Blog.Application.Articles.Commands.CreateArticle;
-using Blog.Application.Articles.Services;
-using Blog.Domain.Articles.Repositories;
+using Blog.PostContext.Application.Articles.Commands.CreateArticle;
+using Blog.PostContext.Application.Articles.Services;
+using Blog.PostContext.Domain.Articles.Repositories;
 using Blog.Infrastructure.Application.Articles;
 using Blog.Infrastructure.Configuration;
 using Blog.Infrastructure.Configuration.Providers;

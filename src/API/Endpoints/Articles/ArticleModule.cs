@@ -1,8 +1,8 @@
-using Blog.Application.Articles.Commands.CreateArticle;
-using Blog.Application.Articles.Commands.DeleteArticle;
-using Blog.Application.Articles.Commands.UpdateArticle;
-using Blog.Application.Articles.Queries.GetArticleById;
-using Blog.Application.Articles.Queries.GetArticles;
+using Blog.PostContext.Application.Articles.Commands.CreateArticle;
+using Blog.PostContext.Application.Articles.Commands.DeleteArticle;
+using Blog.PostContext.Application.Articles.Commands.UpdateArticle;
+using Blog.PostContext.Application.Articles.Queries.GetArticleById;
+using Blog.PostContext.Application.Articles.Queries.GetArticles;
 using Carter;
 using FluentValidation;
 using MediatR;

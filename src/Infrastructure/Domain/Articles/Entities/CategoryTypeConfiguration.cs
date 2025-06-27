@@ -1,4 +1,4 @@
-using Blog.Domain.Articles.Entities;
+using Blog.PostContext.Domain.Articles.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

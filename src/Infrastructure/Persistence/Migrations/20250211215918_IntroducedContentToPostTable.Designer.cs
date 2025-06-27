@@ -25,7 +25,7 @@ namespace Blog.Infrastructure.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Blog.Domain.Posts.Entities.Comment", b =>
+            modelBuilder.Entity("Blog.PostContext.Domain.Posts.Entities.Comment", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -59,7 +59,7 @@ namespace Blog.Infrastructure.Migrations
                     b.ToTable("comments", (string)null);
                 });
 
-            modelBuilder.Entity("Blog.Domain.Posts.Post", b =>
+            modelBuilder.Entity("Blog.PostContext.Domain.Posts.Post", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -94,15 +94,15 @@ namespace Blog.Infrastructure.Migrations
                     b.ToTable("posts", (string)null);
                 });
 
-            modelBuilder.Entity("Blog.Domain.Posts.Entities.Comment", b =>
+            modelBuilder.Entity("Blog.PostContext.Domain.Posts.Entities.Comment", b =>
                 {
-                    b.HasOne("Blog.Domain.Posts.Entities.Comment", null)
+                    b.HasOne("Blog.PostContext.Domain.Posts.Entities.Comment", null)
                         .WithMany("Comments")
                         .HasForeignKey("ParentCommentId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
-            modelBuilder.Entity("Blog.Domain.Posts.Entities.Comment", b =>
+            modelBuilder.Entity("Blog.PostContext.Domain.Posts.Entities.Comment", b =>
                 {
                     b.Navigation("Comments");
                 });

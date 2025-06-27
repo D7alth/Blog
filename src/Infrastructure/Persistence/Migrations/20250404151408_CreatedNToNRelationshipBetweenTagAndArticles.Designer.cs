@@ -40,7 +40,7 @@ namespace Blog.Infrastructure.Migrations
                     b.ToTable("article_tags", (string)null);
                 });
 
-            modelBuilder.Entity("Blog.Domain.Articles.Article", b =>
+            modelBuilder.Entity("Blog.PostContext.Domain.Articles.Article", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -70,7 +70,7 @@ namespace Blog.Infrastructure.Migrations
                     b.ToTable("articles", (string)null);
                 });
 
-            modelBuilder.Entity("Blog.Domain.Articles.Entities.Comment", b =>
+            modelBuilder.Entity("Blog.PostContext.Domain.Articles.Entities.Comment", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -104,7 +104,7 @@ namespace Blog.Infrastructure.Migrations
                     b.ToTable("comments", (string)null);
                 });
 
-            modelBuilder.Entity("Blog.Domain.Articles.Entities.Tag", b =>
+            modelBuilder.Entity("Blog.PostContext.Domain.Articles.Entities.Tag", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -131,28 +131,28 @@ namespace Blog.Infrastructure.Migrations
 
             modelBuilder.Entity("ArticleTags", b =>
                 {
-                    b.HasOne("Blog.Domain.Articles.Article", null)
+                    b.HasOne("Blog.PostContext.Domain.Articles.Article", null)
                         .WithMany()
                         .HasForeignKey("ArticleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Blog.Domain.Articles.Entities.Tag", null)
+                    b.HasOne("Blog.PostContext.Domain.Articles.Entities.Tag", null)
                         .WithMany()
                         .HasForeignKey("TagId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Blog.Domain.Articles.Entities.Comment", b =>
+            modelBuilder.Entity("Blog.PostContext.Domain.Articles.Entities.Comment", b =>
                 {
-                    b.HasOne("Blog.Domain.Articles.Entities.Comment", null)
+                    b.HasOne("Blog.PostContext.Domain.Articles.Entities.Comment", null)
                         .WithMany("Comments")
                         .HasForeignKey("ParentCommentId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
-            modelBuilder.Entity("Blog.Domain.Articles.Entities.Comment", b =>
+            modelBuilder.Entity("Blog.PostContext.Domain.Articles.Entities.Comment", b =>
                 {
                     b.Navigation("Comments");
                 });

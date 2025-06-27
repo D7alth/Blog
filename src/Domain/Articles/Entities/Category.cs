@@ -1,6 +1,6 @@
-using Blog.Domain.Shared;
+using Blog.PostContext.Domain.Shared;
 
-namespace Blog.Domain.Articles.Entities;
+namespace Blog.PostContext.Domain.Articles.Entities;
 
 public sealed class Category : Entity<int>
 {

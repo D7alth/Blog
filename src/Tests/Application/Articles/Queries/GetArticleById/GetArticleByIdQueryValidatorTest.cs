@@ -1,4 +1,4 @@
-using Blog.Application.Articles.Queries.GetArticleById;
+using Blog.PostContext.Application.Articles.Queries.GetArticleById;
 using FluentValidation.TestHelper;
 using NUnit.Framework.Internal;
 

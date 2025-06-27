@@ -1,6 +1,6 @@
 using FluentValidation;
 
-namespace Blog.Application.Articles.Queries.GetArticles;
+namespace Blog.PostContext.Application.Articles.Queries.GetArticles;
 
 public sealed class GetArticlesQueryValidator : AbstractValidator<GetArticlesQuery>
 {

@@ -1,5 +1,5 @@
-using Blog.Application.Articles.Commands.UpdateArticle;
-using Blog.Domain.Articles.Repositories;
+using Blog.PostContext.Application.Articles.Commands.UpdateArticle;
+using Blog.PostContext.Domain.Articles.Repositories;
 using FluentValidation.TestHelper;
 using Moq;
 using NUnit.Framework.Internal;

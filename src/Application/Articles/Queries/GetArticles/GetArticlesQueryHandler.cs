@@ -1,7 +1,7 @@
-using Blog.Domain.Articles.Repositories;
+using Blog.PostContext.Domain.Articles.Repositories;
 using MediatR;
 
-namespace Blog.Application.Articles.Queries.GetArticles;
+namespace Blog.PostContext.Application.Articles.Queries.GetArticles;
 
 public sealed class GetArticlesQueryHandler(IArticleRepository articleRepository)
     : IRequestHandler<GetArticlesQuery, IEnumerable<ArticleResponse>>

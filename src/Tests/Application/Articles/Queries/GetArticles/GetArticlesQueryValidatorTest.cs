@@ -1,4 +1,4 @@
-using Blog.Application.Articles.Queries.GetArticles;
+using Blog.PostContext.Application.Articles.Queries.GetArticles;
 using FluentValidation.TestHelper;
 
 namespace Blog.Tests.Application.Articles.Queries.GetArticles;

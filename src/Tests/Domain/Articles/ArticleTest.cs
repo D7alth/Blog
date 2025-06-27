@@ -1,6 +1,6 @@
-using Blog.Domain.Articles;
-using Blog.Domain.Articles.Entities;
-using Blog.Domain.Shared.Exceptions;
+using Blog.PostContext.Domain.Articles;
+using Blog.PostContext.Domain.Articles.Entities;
+using Blog.PostContext.Domain.Shared.Exceptions;
 using Bogus;
 
 namespace Blog.Tests.Domain.Articles;

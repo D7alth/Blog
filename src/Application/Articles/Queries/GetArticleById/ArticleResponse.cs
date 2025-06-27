@@ -1,6 +1,6 @@
-using Blog.Domain.Articles.Entities;
+using Blog.PostContext.Domain.Articles.Entities;
 
-namespace Blog.Application.Articles.Queries.GetArticleById;
+namespace Blog.PostContext.Application.Articles.Queries.GetArticleById;
 
 public sealed record ArticleResponse(
     string Title,

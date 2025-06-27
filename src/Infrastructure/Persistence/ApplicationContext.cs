@@ -1,5 +1,5 @@
-using Blog.Domain.Articles;
-using Blog.Domain.Articles.Entities;
+using Blog.PostContext.Domain.Articles;
+using Blog.PostContext.Domain.Articles.Entities;
 using Blog.Infrastructure.Configuration;
 using Microsoft.EntityFrameworkCore;
 

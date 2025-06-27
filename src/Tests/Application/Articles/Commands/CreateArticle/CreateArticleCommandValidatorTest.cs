@@ -1,4 +1,4 @@
-using Blog.Application.Articles.Commands.CreateArticle;
+using Blog.PostContext.Application.Articles.Commands.CreateArticle;
 using FluentValidation.TestHelper;
 
 namespace Blog.Tests.Application.Articles.Commands.CreateArticle;

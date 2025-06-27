@@ -1,8 +1,8 @@
-using Blog.Application.Articles.Commands.UpdateArticle;
-using Blog.Application.Articles.Services;
-using Blog.Domain.Articles;
-using Blog.Domain.Articles.Entities;
-using Blog.Domain.Articles.Repositories;
+using Blog.PostContext.Application.Articles.Commands.UpdateArticle;
+using Blog.PostContext.Application.Articles.Services;
+using Blog.PostContext.Domain.Articles;
+using Blog.PostContext.Domain.Articles.Entities;
+using Blog.PostContext.Domain.Articles.Repositories;
 using Moq;
 using NUnit.Framework.Internal;
 

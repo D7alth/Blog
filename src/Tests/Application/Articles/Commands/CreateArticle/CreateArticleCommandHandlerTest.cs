@@ -1,8 +1,8 @@
-using Blog.Application.Articles.Commands.CreateArticle;
-using Blog.Application.Articles.Services;
-using Blog.Domain.Articles;
-using Blog.Domain.Articles.Entities;
-using Blog.Domain.Articles.Repositories;
+using Blog.PostContext.Application.Articles.Commands.CreateArticle;
+using Blog.PostContext.Application.Articles.Services;
+using Blog.PostContext.Domain.Articles;
+using Blog.PostContext.Domain.Articles.Entities;
+using Blog.PostContext.Domain.Articles.Repositories;
 using Moq;
 
 namespace Blog.Tests.Application.Articles.Commands.CreateArticle;

@@ -1,4 +1,4 @@
-using Blog.Domain.Articles.Entities;
+using Blog.PostContext.Domain.Articles.Entities;
 
 namespace Blog.Tests.Domain.Articles.Entities;
 

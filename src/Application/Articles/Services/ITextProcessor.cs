@@ -1,4 +1,4 @@
-namespace Blog.Application.Articles.Services;
+namespace Blog.PostContext.Application.Articles.Services;
 
 public interface ITextProcessor
 {

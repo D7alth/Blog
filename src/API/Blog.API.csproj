@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Infrastructure\Blog.Infrastructure.csproj" />
+    <ProjectReference Include="..\Infrastructure\Blog.PostContext.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
