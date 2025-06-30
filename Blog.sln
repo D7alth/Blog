@@ -3,19 +3,29 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.PostContext.Infrastructure", "src\Infrastructure\Blog.PostContext.Infrastructure.csproj", "{0BD6DC62-EDAF-4C8F-A3C1-A954B7EF43F0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.PostContext.Infrastructure", "src\Modules\PostContext\Infrastructure\Blog.PostContext.Infrastructure.csproj", "{0BD6DC62-EDAF-4C8F-A3C1-A954B7EF43F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.PostContext.Application", "src\Application\Blog.PostContext.Application.csproj", "{21861DE5-90D9-4E06-98F2-AD8574E4F254}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.PostContext.Application", "src\Modules\PostContext\Application\Blog.PostContext.Application.csproj", "{21861DE5-90D9-4E06-98F2-AD8574E4F254}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.PostContext.Domain", "src\Domain\Blog.PostContext.Domain.csproj", "{CF1A1326-4700-4A3B-A7E0-AEB97981FA45}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.PostContext.Domain", "src\Modules\PostContext\Domain\Blog.PostContext.Domain.csproj", "{CF1A1326-4700-4A3B-A7E0-AEB97981FA45}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.PostContext.Tests", "src\Tests\Blog.PostContext.Tests.csproj", "{297EC7BC-09F6-4539-A95B-FFBE8C78613F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.PostContext.Tests", "src\Modules\PostContext\Tests\Blog.PostContext.Tests.csproj", "{297EC7BC-09F6-4539-A95B-FFBE8C78613F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.API", "src\API\Blog.API.csproj", "{91E25749-75FB-4E41-9DC4-E02DEE92FAC3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{18A0C274-BEAD-4E87-9F68-81D238D5D2FF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PostContext", "PostContext", "{A37C7858-1F55-4D79-ADD3-0D3F458B9854}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AccountContext", "AccountContext", "{7A35796A-396B-4CE9-9B96-269C9BE2C749}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.AccountContext.Infraestructure", "src\Modules\AccountContext\Blog.AccountContext.Infraestructure\Blog.AccountContext.Infraestructure.csproj", "{3CE0C794-F89D-487C-B22F-E6A6854631DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.AccountContext.Application", "src\Modules\AccountContext\Blog.AccountContext.Application\Blog.AccountContext.Application.csproj", "{12286594-BEBB-4E79-A63C-6A68BBE7D405}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.AccountContext.Domain", "src\Modules\AccountContext\Blog.AccountContext.Domain\Blog.AccountContext.Domain.csproj", "{87873FC5-EE4E-4AD8-AD79-54D583C02776}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.AccountContext.Test", "src\Modules\AccountContext\Blog.AccountContext.Test\Blog.AccountContext.Test.csproj", "{3A3EE14A-44FB-412F-AD9C-DB72922BC8C2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -46,6 +56,22 @@ Global
 		{91E25749-75FB-4E41-9DC4-E02DEE92FAC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91E25749-75FB-4E41-9DC4-E02DEE92FAC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91E25749-75FB-4E41-9DC4-E02DEE92FAC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CE0C794-F89D-487C-B22F-E6A6854631DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CE0C794-F89D-487C-B22F-E6A6854631DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CE0C794-F89D-487C-B22F-E6A6854631DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CE0C794-F89D-487C-B22F-E6A6854631DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12286594-BEBB-4E79-A63C-6A68BBE7D405}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12286594-BEBB-4E79-A63C-6A68BBE7D405}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12286594-BEBB-4E79-A63C-6A68BBE7D405}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12286594-BEBB-4E79-A63C-6A68BBE7D405}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87873FC5-EE4E-4AD8-AD79-54D583C02776}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87873FC5-EE4E-4AD8-AD79-54D583C02776}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87873FC5-EE4E-4AD8-AD79-54D583C02776}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87873FC5-EE4E-4AD8-AD79-54D583C02776}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A3EE14A-44FB-412F-AD9C-DB72922BC8C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A3EE14A-44FB-412F-AD9C-DB72922BC8C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A3EE14A-44FB-412F-AD9C-DB72922BC8C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A3EE14A-44FB-412F-AD9C-DB72922BC8C2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{A37C7858-1F55-4D79-ADD3-0D3F458B9854} = {18A0C274-BEAD-4E87-9F68-81D238D5D2FF}
@@ -53,5 +79,10 @@ Global
 		{CF1A1326-4700-4A3B-A7E0-AEB97981FA45} = {A37C7858-1F55-4D79-ADD3-0D3F458B9854}
 		{0BD6DC62-EDAF-4C8F-A3C1-A954B7EF43F0} = {A37C7858-1F55-4D79-ADD3-0D3F458B9854}
 		{297EC7BC-09F6-4539-A95B-FFBE8C78613F} = {A37C7858-1F55-4D79-ADD3-0D3F458B9854}
+		{7A35796A-396B-4CE9-9B96-269C9BE2C749} = {18A0C274-BEAD-4E87-9F68-81D238D5D2FF}
+		{3CE0C794-F89D-487C-B22F-E6A6854631DD} = {7A35796A-396B-4CE9-9B96-269C9BE2C749}
+		{12286594-BEBB-4E79-A63C-6A68BBE7D405} = {7A35796A-396B-4CE9-9B96-269C9BE2C749}
+		{87873FC5-EE4E-4AD8-AD79-54D583C02776} = {7A35796A-396B-4CE9-9B96-269C9BE2C749}
+		{3A3EE14A-44FB-412F-AD9C-DB72922BC8C2} = {7A35796A-396B-4CE9-9B96-269C9BE2C749}
 	EndGlobalSection
 EndGlobal
