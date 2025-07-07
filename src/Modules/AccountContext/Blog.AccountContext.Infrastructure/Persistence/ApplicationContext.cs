@@ -4,7 +4,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Blog.AccountContext.Infrastructure.Persistence;
 
-public class ApplicationContext(IDbContextOptionsProvider dbContextOptionsProvider) : IdentityDbContext
+public class ApplicationContext(IDbContextOptionsProvider dbContextOptionsProvider)
+    : IdentityDbContext
 {
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
