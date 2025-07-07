@@ -13,7 +13,7 @@ public static class AccountContextModule
     )
     {
         services.AddSingleton<IDbContextOptionsProvider>(provider => new SqlLiteDbContextProvider(
-            "DataSource = identityDb; Cache=Shared"
+            "DataSource = identity.db; Cache=Shared"
         ));
     }
 }
