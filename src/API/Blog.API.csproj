@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Modules\AccountContext\Blog.AccountContext.Infrastructure\Blog.AccountContext.Infrastructure.csproj" />
     <ProjectReference Include="..\Modules\PostContext\Infrastructure\Blog.PostContext.Infrastructure.csproj" />
     <ProjectReference Include="..\Modules\PostContext\Application\Blog.PostContext.Application.csproj" />
     <ProjectReference Include="..\Modules\PostContext\Infrastructure\Blog.PostContext.Infrastructure.csproj" />

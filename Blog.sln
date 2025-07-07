@@ -19,7 +19,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PostContext", "PostContext"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AccountContext", "AccountContext", "{7A35796A-396B-4CE9-9B96-269C9BE2C749}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.AccountContext.Infraestructure", "src\Modules\AccountContext\Blog.AccountContext.Infraestructure\Blog.AccountContext.Infraestructure.csproj", "{3CE0C794-F89D-487C-B22F-E6A6854631DD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.AccountContext.Infrastructure", "src\Modules\AccountContext\Blog.AccountContext.Infrastructure\Blog.AccountContext.Infrastructure.csproj", "{3CE0C794-F89D-487C-B22F-E6A6854631DD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.AccountContext.Application", "src\Modules\AccountContext\Blog.AccountContext.Application\Blog.AccountContext.Application.csproj", "{12286594-BEBB-4E79-A63C-6A68BBE7D405}"
 EndProject

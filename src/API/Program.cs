@@ -1,3 +1,4 @@
+using Blog.AccountContext.Infrastructure;
 using Blog.PostContext.Infrastructure;
 using Carter;
 
@@ -8,6 +9,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddCarter();
 
 ServiceRegistration.AddInfrastructure(builder.Services, builder.Configuration);
+AccountContextModule.AddInfrastructure(builder.Services, builder.Configuration);
 
 var app = builder.Build();
 
