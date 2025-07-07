@@ -12,6 +12,7 @@
 
 *.db
 *.db*
+*Db*
 
 ### ASPNETCore template
 ## Ignore Visual Studio temporary files, build results, and
